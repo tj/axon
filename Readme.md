@@ -24,8 +24,8 @@
 `PushSocket`s distribute messages round-robin.
 
 ```js
-var ss = require('super-sockets');
-var sock = ss.socket('push');
+var ss = require('super-sockets')
+  , sock = ss.socket('push');
 
 sock.bind(3000);
 console.log('push server started');
@@ -39,16 +39,14 @@ setInterval(function(){
 Receiver of `PushSocket` messages.
 
 ```js
-var ss = require('../../')
-  , sock = ss.socket('push');
+var ss = require('super-sockets')
+  , sock = ss.socket('pull');
 
-sock.bind(3000);
-console.log('push server started');
+sock.connect(3000);
 
-setInterval(function(){
-  process.stdout.write('.');
-  sock.send('hello');
-}, 150);
+sock.on('message', function(msg){
+  console.log(msg.toString());
+});
 ```
 
 ## Pub / Sub
@@ -58,8 +56,8 @@ setInterval(function(){
 _pub.js_:
 
 ```js
-var ss = require('super-sockets');
-var sock = ss.socket('pub');
+var ss = require('super-sockets')
+  , sock = ss.socket('pub');
 
 sock.bind(3000);
 console.log('pub server started');
@@ -75,8 +73,8 @@ setInterval(function(){
 _sub.js_:
 
 ```js
-var ss = require('super-sockets');
-var sock = ss.socket('sub');
+var ss = require('super-sockets')
+  , sock = ss.socket('sub');
 
 sock.connect(3000);
 
@@ -95,8 +93,8 @@ providing the natural API you're used to:
 server.js:
 
 ```js
-var ss = require('super-sockets');
-var sock = ss.socket('emitter');
+var ss = require('super-sockets')
+  , sock = ss.socket('emitter');
 
 sock.bind(3000);
 console.log('pub server started');
@@ -109,8 +107,8 @@ setInterval(function(){
 client.js:
 
 ```js
-var ss = require('super-sockets');
-var sock = ss.socket('emitter');
+var ss = require('super-sockets')
+  , sock = ss.socket('emitter');
 
 sock.connect(3000);
 console.log('sub client connected');
