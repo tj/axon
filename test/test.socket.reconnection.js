@@ -24,12 +24,12 @@ pull.on('message', function(msg){
     case 10:
       pull.close();
       pull.on('close', function(){
-        if (100 == msgs.length) return;
+        if (1000 == msgs.length) return;
         pull.connect(3000);
       });
       break;
-    case 100:
-      for (var i = 0; i < 99; ++i) {
+    case 1000:
+      for (var i = 0; i < 999; ++i) {
         msgs[i].should.equal(i.toString());
       }
       clearInterval(id);

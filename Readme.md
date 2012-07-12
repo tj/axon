@@ -115,7 +115,7 @@ sock.on('login', function(user){
 ## Protocol
 
   The wire protocol is simple and very much zeromq-like, where `<length>` is
-  a 24 bit unsigned integer representing a maximum length of roughly ~16mb. The `<meta>`
+  a BE 24 bit unsigned integer representing a maximum length of roughly ~16mb. The `<meta>`
   data byte is currently only used to store the codec, for example "json" is simply `1`,
   in turn JSON messages received on the client end will then be automatically decoded for
   you by selecting this same codec.
@@ -126,6 +126,10 @@ sock.on('login', function(user){
         | meta | <length>           | data ...
         +------+------+------+------+------------------...
 ```
+
+  Thus 5 bytes is the smallest message super sockets supports at the moment. Later if
+  necessary we can use the meta to indicate a small message and ditch octet 2 and 3 
+  allowing for 3 byte messages.
 
 ## What's it good for?
 
@@ -152,9 +156,11 @@ $ make test
   - pluggable codecs
   - weighted fair queuing
   - use mocha for tests
-  - multipart
+  - multipart frames
+  - batching
   - binary support for EmitterSocket (requires multipart)
   - subscriptions
+  - profiling / applying basic perf rules (pre-define members etc, measure results)
   - ...
 
 ## License 
