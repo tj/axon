@@ -148,6 +148,17 @@ ss.codec.define('json', {
   super sockets cannot properly decode the messages. You may of course ignore this
   feature all together and simply pass encoded data to `.send()`.
 
+## Performance
+
+  I haven't profiled or tuned anything yet but so far for a single byte message:
+
+```
+
+    mean: 58291 ops/s
+  median: 47675 ops/s
+
+```
+
 ## What's it good for?
 
   Super sockets are not meant to combat zeromq nor provide feature parity,
