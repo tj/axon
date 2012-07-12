@@ -150,6 +150,7 @@ $ make test
   - weighted fair queuing
   - use mocha for tests
   - multipart
+  - binary support for EmitterSocket (requires multipart)
   - subscriptions
   - ...
 
