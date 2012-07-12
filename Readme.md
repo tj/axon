@@ -3,6 +3,10 @@
 
   Super Sockets is a message-oriented socket library for node.js heavily inspired by zeromq.
 
+## Installation
+
+    $ npm install super-sockets
+
 ## Features
 
   - message oriented
@@ -128,6 +132,13 @@ sock.on('login', function(user){
         | meta | <length>           | data ...
         +------+------+------+------+------------------...
 ```
+
+## What's it good for?
+
+  Super sockets are not meant to combat zeromq by any means,
+  but provide a nice solution when you don't need the insane
+  nanosecond latency or language interoperability that zeromq provides
+  as super sockets do not rely on any third-party compiled libraries.
 
 ## Running tests
 
