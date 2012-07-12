@@ -117,8 +117,7 @@ sock.on('login', function(user){
 ## Protocol
 
   The wire protocol is simple and very much zeromq-like, where `<length>` is
-  a 24 bit unsigned integer, representing a maximum length of 2^24, roughly ~16mb,
-  so you should be good :p
+  a 24 bit unsigned integer representing a maximum length of roughly ~16mb.
 
 ```
  octet:     0      1      2      3      <length>
