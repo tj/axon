@@ -80,9 +80,8 @@ sock.on('message', function(msg){
 ## EmitterSocket
 
 `EmitterSocket`'s send and receive messages behaving like regular node `EventEmitter`s.
-This is achieved by using pub / sub sockets behind the scenes. Currently we simply choose
-define the `EmitterSocket` as a `PubSocket` if you `.bind()`, and `SubSocket` if you `.connect()`,
-providing the natural API you're used to:
+This is achieved by using pub / sub sockets behind the scenes, automatically assigned
+the "json" codec. Currently we simply choose define the `EmitterSocket` as a `PubSocket` if you `.bind()`, and `SubSocket` if you `.connect()`, providing the natural API you're used to:
 
 server.js:
 
