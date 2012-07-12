@@ -167,6 +167,7 @@ $ make test
   - more tests
   - code cov
   - acks
+  - make socket options configurable
   - clean up queue / sock
   - benchmarks
   - emitter style on top of pubsub with multipart
