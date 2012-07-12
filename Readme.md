@@ -31,7 +31,6 @@ sock.bind(3000);
 console.log('push server started');
 
 setInterval(function(){
-  process.stdout.write('.');
   sock.send('hello');
 }, 150);
 ```
@@ -61,7 +60,6 @@ sock.bind(3000);
 console.log('pub server started');
 
 setInterval(function(){
-  console.log('sending');
   sock.send('hello');
 }, 500);
 ```
