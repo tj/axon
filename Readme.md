@@ -115,7 +115,10 @@ sock.on('login', function(user){
 ## Protocol
 
   The wire protocol is simple and very much zeromq-like, where `<length>` is
-  a 24 bit unsigned integer representing a maximum length of roughly ~16mb.
+  a 24 bit unsigned integer representing a maximum length of roughly ~16mb. The `<meta>`
+  data byte is currently only used to store the codec, for example "json" is simply `1`,
+  in turn JSON messages received on the client end will then be automatically decoded for
+  you by selecting this same codec.
 
 ```
  octet:     0      1      2      3      <length>
