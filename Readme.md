@@ -21,7 +21,7 @@
 
 ## Push / Pull
 
-`PushSocket`s distribute messages round-robin.
+`PushSocket`s distribute messages round-robin:
 
 ```js
 var ss = require('super-sockets')
@@ -36,7 +36,7 @@ setInterval(function(){
 }, 150);
 ```
 
-Receiver of `PushSocket` messages.
+Receiver of `PushSocket` messages:
 
 ```js
 var ss = require('super-sockets')
@@ -51,9 +51,7 @@ sock.on('message', function(msg){
 
 ## Pub / Sub
 
-`PubSocket`s send messages to all subscribers without queueing.
-
-_pub.js_:
+`PubSocket`s send messages to all subscribers without queueing:
 
 ```js
 var ss = require('super-sockets')
@@ -68,9 +66,7 @@ setInterval(function(){
 }, 500);
 ```
 
-`SubSocket` provides selective reception of messages from a `PubSocket`.
-
-_sub.js_:
+`SubSocket` provides selective reception of messages from a `PubSocket`:
 
 ```js
 var ss = require('super-sockets')
