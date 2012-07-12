@@ -5,13 +5,11 @@ var ss = require('..')
 sock.bind(3000);
 console.log('pub bound');
 
+var perTick = 100;
+var buf = new Buffer('a');
+
 function more() {
-  sock.send('hello');
-  sock.send('hello');
-  sock.send('hello');
-  sock.send('hello');
-  sock.send('hello');
-  sock.send('hello');
+  for (var i = 0; i < perTick; ++i) sock.send(buf);
   process.nextTick(more);
 }
 
