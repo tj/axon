@@ -29,6 +29,14 @@ function sum(arr) {
   });
 }
 
+function min(arr) {
+  return arr.reduce(function(min, n){
+    return n < min
+      ? n
+      : min;
+  });
+}
+
 function mean(arr) {
   return sum(arr) / arr.length | 0;
 }
@@ -41,6 +49,7 @@ function median(arr) {
 process.on('SIGINT', function(){
   t = process.hrtime(start);
   console.log('\n');
+  console.log('      min: %d ops/s', min(results));
   console.log('     mean: %d ops/s', mean(results));
   console.log('   median: %d ops/s', median(results));
   console.log('    total: %d ops in %d.%ds', n, t[0], t[1] / 1000 / 1000 | 0);
