@@ -130,6 +130,24 @@ sock.on('login', function(user){
   necessary we can use the meta to indicate a small message and ditch octet 2 and 3 
   allowing for 3 byte messages.
 
+## Codecs
+
+  To define a codec simply invoke the `ss.codec.define()` method, for example
+  here is the JSON codec:
+
+```js
+var ss = require('super-sockets');
+
+ss.codec.define('json', {
+  encode: JSON.stringify,
+  decode: JSON.parse
+});
+```
+
+  __Note:__ codecs must be defined on both the sending and receiving ends, otherwise
+  super sockets cannot properly decode the messages. You may of course ignore this
+  feature all together and simply pass encoded data to `.send()`.
+
 ## What's it good for?
 
   Super sockets are not meant to combat zeromq nor provide feature parity,
