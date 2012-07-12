@@ -152,6 +152,7 @@ $ make test
   - more tests
   - code cov
   - acks
+  - benchmarks
   - emitter style on top of pubsub with multipart
   - pluggable codecs
   - weighted fair queuing
