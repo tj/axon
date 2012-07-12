@@ -7,8 +7,10 @@ sock.connect(3000);
 
 var n = 0;
 var ops = 200;
-var t = process.hrtime();
+var t = start = process.hrtime();
 var results = [];
+
+console.log();
 
 sock.on('message', function(msg){
   if (n++ % ops == 0) {
@@ -37,9 +39,11 @@ function median(arr) {
 }
 
 process.on('SIGINT', function(){
+  t = process.hrtime(start);
   console.log('\n');
   console.log('     mean: %d ops/s', mean(results));
   console.log('   median: %d ops/s', median(results));
+  console.log('    total: %d ops in %d.%ds', n, t[0], t[1] / 1000 / 1000 | 0);
   console.log();
   process.exit();
 });
