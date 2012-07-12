@@ -5,8 +5,9 @@ var ss = require('..')
 sock.bind(3000);
 console.log('pub bound');
 
-var perTick = 1;
+var perTick = 1000;
 var buf = new Buffer('hello');
+console.log('sending %d per tick', perTick);
 console.log('sending %d byte messages', buf.length);
 
 function more() {
