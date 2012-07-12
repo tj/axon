@@ -1,11 +1,11 @@
 {
   "name": "super-sockets",
   "description": "High-level messaging & socket patterns implemented in pure js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
   "devDependencies": {
     "should": "*",
     "mocha": "*"
   },
-  "keywords": ["zmq", "zeromq", "pubsub", "socket"]
+  "keywords": ["zmq", "zeromq", "pubsub", "socket", "emitter", "ipc", "rpc"]
 }
