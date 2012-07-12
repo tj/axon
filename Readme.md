@@ -14,7 +14,7 @@
   - light-weight wire protocol
   - light-weight implementation (~300 SLOC)
   - supports arbitrary binary message (msgpack, json, BLOBS, etc)
-  - supports JSON messages
+  - supports JSON messages out of the box
   - push / pull pattern
   - pub / sub pattern
   - event emitter pattern
