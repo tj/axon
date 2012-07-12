@@ -38,8 +38,8 @@ function median(arr) {
 
 process.on('SIGINT', function(){
   console.log('\n');
-  console.log('     mean: %d', mean(results));
-  console.log('   median: %d', median(results));
+  console.log('     mean: %d ops/s', mean(results));
+  console.log('   median: %d ops/s', median(results));
   console.log();
   process.exit();
 });
