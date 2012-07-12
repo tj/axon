@@ -1,10 +1,15 @@
 
-var zmq = require('..')
-  , pub = zmq.socket('pub');
+var ss = require('..')
+  , sock = ss.socket('pub');
 
-var n = 1000;
+sock.bind(3000);
+console.log('pub bound');
 
-pub.bind(3000, function(){
-  console.log('bound to :3000');
-  while (n--) pub.send('foo');
-});
+setInterval(function(){
+  sock.send('hello');
+  sock.send('hello');
+  sock.send('hello');
+  sock.send('hello');
+  sock.send('hello');
+  sock.send('hello');
+}, 1);
