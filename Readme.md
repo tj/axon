@@ -150,12 +150,32 @@ ss.codec.define('json', {
 
 ## Performance
 
-  I haven't profiled or tuned anything yet but so far for a single byte message:
+  I haven't profiled or tuned anything yet but so far for on my macbook air:
+
+1 byte messages:
 
 ```
 
-    mean: 58291 ops/s
-  median: 47675 ops/s
+    mean: 61986 ops/s
+  median: 45512 ops/s
+
+```
+
+  1k messages:
+
+```
+
+    mean: 56958 ops/s
+  median: 45995 ops/s
+
+```
+
+  20k messages:
+
+```
+
+    mean: 7597 ops/s
+  median: 4819 ops/s
 
 ```
 
