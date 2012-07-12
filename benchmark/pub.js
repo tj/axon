@@ -5,11 +5,14 @@ var ss = require('..')
 sock.bind(3000);
 console.log('pub bound');
 
-setInterval(function(){
+function more() {
   sock.send('hello');
   sock.send('hello');
   sock.send('hello');
   sock.send('hello');
   sock.send('hello');
   sock.send('hello');
-}, 1);
+  process.nextTick(more);
+}
+
+more();

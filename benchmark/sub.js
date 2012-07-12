@@ -4,7 +4,6 @@ var ss = require('..')
   , sock = ss.socket('sub');
 
 sock.connect(3000);
-console.log('sub connected');
 
 var n = 0;
 var ops = 200;
