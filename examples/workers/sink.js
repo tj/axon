@@ -11,8 +11,7 @@ console.log('sink bound to 3001');
 // save images
 
 sock.on('message', function(img){
-  console.log(img);
-  var path = '/tmp/' + (Math.random() * 0xffffff | 0);
+  var path = '/tmp/' + (Math.random() * 0xffffff | 0) + '.png';
   fs.writeFile(path, img, function(err){
     if (err) throw err;
     // ^ dont do this
