@@ -7,6 +7,7 @@ sock.connect(3000);
 
 var n = 0;
 var ops = 200;
+var bytes = 1024;
 var t = start = process.hrtime();
 var results = [];
 
@@ -48,11 +49,13 @@ function median(arr) {
 
 process.on('SIGINT', function(){
   t = process.hrtime(start);
+  var avg = mean(results);
   console.log('\n');
   console.log('      min: %d ops/s', min(results));
-  console.log('     mean: %d ops/s', mean(results));
+  console.log('     mean: %d ops/s', avg);
   console.log('   median: %d ops/s', median(results));
   console.log('    total: %d ops in %d.%ds', n, t[0], t[1] / 1000 / 1000 | 0);
+  console.log('  through: %d mb/s', (avg * bytes) / 1024 / 1024);
   console.log();
   process.exit();
 });
