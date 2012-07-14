@@ -48,6 +48,12 @@ sock.on('message', function(msg){
 });
 ```
 
+Both `PushSocket`s and `PullSocket`s may `.bind()` or `.connect()` as illustrated
+the worker and sink configurations shown:
+
+![push bind](http://f.cl.ly/items/473u3m1a0k1i0J0I3s04/ss-push.png)
+![pull bind](http://f.cl.ly/items/3Y0j2v153Q0l1r373i0H/ss-pull.png)
+
 ## Pub / Sub
 
 `PubSocket`s send messages to all subscribers without queueing:
