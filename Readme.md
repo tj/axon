@@ -48,10 +48,15 @@ sock.on('message', function(msg){
 });
 ```
 
-Both `PushSocket`s and `PullSocket`s may `.bind()` or `.connect()` as illustrated
-the worker and sink configurations shown:
+Both `PushSocket`s and `PullSocket`s may `.bind()` or `.connect()`. In the 
+following configuration the push socket is bound and pull "workers" connect
+to it to receive work:
 
 ![push bind](http://f.cl.ly/items/473u3m1a0k1i0J0I3s04/ss-push.png)
+
+This configuration shows the inverse, where workers connect to a "sink"
+to push results:
+
 ![pull bind](http://f.cl.ly/items/3Y0j2v153Q0l1r373i0H/ss-pull.png)
 
 ## Pub / Sub
