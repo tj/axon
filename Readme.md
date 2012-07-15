@@ -161,16 +161,17 @@ ss.codec.define('json', {
 
 ## Performance
 
-  I haven't profiled or tuned anything yet but so far for on my macbook air,
-  at roughly 170mb/s throughput.
+  I haven't profiled or tuned anything yet but so far for on my macbook pro.
 
 64 byte messages:
 
 ```
 
-     min: 19,383 ops/s
-    mean: 246,183 ops/s
-  median: 208,833 ops/s
+      min: 22,085 ops/s
+     mean: 585,944 ops/s
+   median: 606,176 ops/s
+    total: 326,7126 ops in 6.5s
+  through: 35.76318359375 mb/s
 
 ```
 
@@ -178,20 +179,11 @@ ss.codec.define('json', {
 
 ```
 
-      min: 1,361 ops/s
-     mean: 174,923 ops/s
-   median: 23,925 ops/s
-
-```
-
-  for comparison redis on my air gets:
-
-```
-      min: 4,307 ops/s
-     mean: 10,332 ops/s
-   median: 10,641 ops/s
-    total: 51,963 ops in 5.386s
-  through: 10.0898437 mb/s
+      min: 1,851 ops/s
+     mean: 34,0156 ops/s
+   median: 449,660 ops/s
+    total: 329,831 ops in 4.241s
+  through: 332.18359375 mb/s
 
 ```
 
