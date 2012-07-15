@@ -184,6 +184,17 @@ ss.codec.define('json', {
 
 ```
 
+  for comparison redis on my air gets:
+
+```
+      min: 4,307 ops/s
+     mean: 10,332 ops/s
+   median: 10,641 ops/s
+    total: 51,963 ops in 5.386s
+  through: 10.0898437 mb/s
+
+```
+
 ## What's it good for?
 
   Super sockets are not meant to combat zeromq nor provide feature parity,
