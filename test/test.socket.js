@@ -17,4 +17,4 @@ ss.socket('pub').should.be.an.instanceof(ss.PubSocket);
 ss.socket('sub').should.be.an.instanceof(ss.SubSocket);
 ss.socket('push').should.be.an.instanceof(ss.PushSocket);
 ss.socket('pull').should.be.an.instanceof(ss.PullSocket);
-
+process.exit();
