@@ -214,16 +214,13 @@ $ make test
   - acks
   - make socket options configurable
   - clean up queue / sock
-  - benchmarks
   - emitter style on top of pubsub with multipart
-  - pluggable codecs
   - weighted fair queuing
   - use mocha for tests
   - multipart frames
   - better batching ... (only smaller messages?)
   - binary support for EmitterSocket (requires multipart)
   - subscriptions
-  - profiling / applying basic perf rules (pre-define members etc, measure results)
   - ...
 
 ## License 
