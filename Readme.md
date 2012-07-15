@@ -220,7 +220,7 @@ $ make test
   - weighted fair queuing
   - use mocha for tests
   - multipart frames
-  - better batching ... (only smaller messages?)
+  - cap batch size
   - binary support for EmitterSocket (requires multipart)
   - subscriptions
   - ...
