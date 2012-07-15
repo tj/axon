@@ -221,6 +221,7 @@ $ make test
   - use mocha for tests
   - multipart frames
   - cap batch size
+  - zero-copy for batches...
   - binary support for EmitterSocket (requires multipart)
   - subscriptions
   - ...
