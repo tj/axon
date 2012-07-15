@@ -184,15 +184,6 @@ ss.codec.define('json', {
 
 ```
 
-  20k messages:
-
-```
-
-    mean: 7597 ops/s
-  median: 4819 ops/s
-
-```
-
 ## What's it good for?
 
   Super sockets are not meant to combat zeromq nor provide feature parity,
