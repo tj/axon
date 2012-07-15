@@ -222,6 +222,7 @@ $ make test
   - multipart frames
   - cap batch size
   - zero-copy for batches...
+  - make batching configurable... disable for lower latency
   - binary support for EmitterSocket (requires multipart)
   - subscriptions
   - ...
