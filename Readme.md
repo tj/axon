@@ -161,14 +161,16 @@ ss.codec.define('json', {
 
 ## Performance
 
-  I haven't profiled or tuned anything yet but so far for on my macbook air:
+  I haven't profiled or tuned anything yet but so far for on my macbook air,
+  at roughly 170mb/s throughput.
 
-1 byte messages:
+64 byte messages:
 
 ```
 
-    mean: 61986 ops/s
-  median: 45512 ops/s
+     min: 19,383 ops/s
+    mean: 246,183 ops/s
+  median: 208,833 ops/s
 
 ```
 
@@ -176,8 +178,9 @@ ss.codec.define('json', {
 
 ```
 
-    mean: 56958 ops/s
-  median: 45995 ops/s
+      min: 1,361 ops/s
+     mean: 174,923 ops/s
+   median: 23,925 ops/s
 
 ```
 
@@ -217,7 +220,7 @@ $ make test
   - weighted fair queuing
   - use mocha for tests
   - multipart frames
-  - batching
+  - better batching ... (only smaller messages?)
   - binary support for EmitterSocket (requires multipart)
   - subscriptions
   - profiling / applying basic perf rules (pre-define members etc, measure results)
