@@ -1,4 +1,3 @@
-
 # Super Sockets
 
   Super Sockets is a message-oriented socket library for node.js heavily inspired by zeromq.
@@ -200,6 +199,10 @@ ss.codec.define('json', {
 $ npm install
 $ make test
 ```
+
+## Links
+
+  - [Screencast](https://vimeo.com/45818408)
 
 ## Todo
 
