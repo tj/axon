@@ -59,6 +59,43 @@ to push results:
 
 ![pull bind](http://f.cl.ly/items/3Y0j2v153Q0l1r373i0H/ss-pull.png)
 
+Additionally, `PullSocket`s can issue singlecast responses.
+
+Example `PushSocket` code that sends out pings:
+
+```js
+var ss = require('super-sockets')
+  , sock = ss.socket('push');
+
+sock.bind(3000);
+console.log('push server started');
+
+setInterval(function(){
+  sock.send('ping');
+}, 150);
+
+sock.on('message', function(msg){
+  console.log(msg.toString());
+});
+```
+
+Example `PullSocket` code that replies with pongs:
+
+```js
+var ss = require('super-sockets')
+  , sock = ss.socket('pull');
+
+sock.connect(3000);
+
+sock.on('message', function(msg, reply){
+  console.log(msg.toString());
+
+  reply('pong');
+});
+```
+
+If the above code is run, the `PushSocket` server will round-robin pings through the `PullSocket` clients, receiving pongs in response.
+
 ## Pub / Sub
 
 `PubSocket`s send messages to all subscribers without queueing:
