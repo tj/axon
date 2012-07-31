@@ -45,4 +45,22 @@ msgs[0].body[2].hello.should.equal('world');
 msgs[0].body[3].should.be.instanceof(Buffer);
 msgs[0].body[3].toString().should.equal('sick');
 
+// test single msg written in multi mode
+
+msgs = [];
+
+var msg = encoder
+  .multi()
+  .pack('1', 1)
+  .end();
+
+msg.length.should.equal(5);
+
+decoder.write(msg);
+
+msgs[0].body.should.not.be.instanceof(Array);
+msgs[0].body.toString().should.equal('1');
+
+
+
 
