@@ -17,7 +17,7 @@ decoder.onmessage = function(body, multi) {
 msgs = [];
 
 decoder.write(encoder.pack('that is good tobi', 1));
-decoder.write(encoder.pack({ super: 'sockets' }, 2));
+decoder.write(encoder.pack(JSON.stringify({ super: 'sockets' }), 2));
 
 msgs[0].body.toString().should.equal('that is good tobi');
 msgs[1].body.super.should.equal('sockets');
@@ -30,7 +30,7 @@ var msg = encoder
   .multi()
   .pack('foo', 1)
   .pack('bar', 1)
-  .pack({ hello: 'world' }, 2)
+  .pack(JSON.stringify({ hello: 'world' }), 2)
   .pack(new Buffer([0x73, 0x69, 0x63, 0x6b]), 1)
   .end();
 
