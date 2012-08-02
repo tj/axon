@@ -1,66 +1,127 @@
 
 var ss = require('..')
-  , encoder = new ss.Encoder
-  , decoder = new ss.Decoder
   , should = require('should')
-  , msgs;
+  , Message = ss.Message
+  , msg
+  , buf
+  , expected;
 
-// capture messages
+// text
 
-decoder.onmessage = function(body, multi) {
-  msgs.push({ body: body, multi: multi });
-};
+msg = new Message;
 
+expected = [
+  0x01, 0x00, 0x00, 0x03,
+  0x68, 0x61, 0x69
+];
 
-// test pack()
+msg.write('hai');
+buf = msg.toBuffer();
 
-msgs = [];
+buf.should.have.length(expected.length);
 
-decoder.write(encoder.pack('that is good tobi', 1));
-decoder.write(encoder.pack(JSON.stringify({ super: 'sockets' }), 2));
+for (var i = 0; i < expected.length; i++) {
+  buf[i].should.equal(expected[i]);
+}
 
-msgs[0].body.toString().should.equal('that is good tobi');
-msgs[1].body.super.should.equal('sockets');
+// text -- constuctor
 
-// test multipart chaining
+msg = new Message('hai');
 
-msgs = [];
+expected = [
+  0x01, 0x00, 0x00, 0x03,
+  0x68, 0x61, 0x69
+];
 
-var msg = encoder
-  .multi()
-  .pack('foo', 1)
-  .pack('bar', 1)
-  .pack(JSON.stringify({ hello: 'world' }), 2)
-  .pack(new Buffer([0x73, 0x69, 0x63, 0x6b]), 1)
-  .end();
+buf = msg.toBuffer();
 
-decoder.write(msg);
+buf.should.have.length(expected.length);
 
-msgs[0].body.should.be.instanceof(Array);
-msgs[0].body.should.have.length(4);
+for (var i = 0; i < expected.length; i++) {
+  buf[i].should.equal(expected[i]);
+}
 
-msgs[0].body[0].toString().should.equal('foo');
-msgs[0].body[1].toString().should.equal('bar');
-msgs[0].body[2].hello.should.equal('world');
-msgs[0].body[3].should.be.instanceof(Buffer);
-msgs[0].body[3].toString().should.equal('sick');
+// binary
 
-// test single msg written in multi mode
+msg = new Message;
 
-msgs = [];
+expected = [
+  0x01, 0x00, 0x00, 0x03,
+  0x68, 0x61, 0x69
+];
 
-var msg = encoder
-  .multi()
-  .pack('1', 1)
-  .end();
+msg.write(new Buffer([0x68, 0x61, 0x69]));
 
-msg.length.should.equal(5);
+buf = msg.toBuffer();
 
-decoder.write(msg);
+buf.should.have.length(expected.length);
 
-msgs[0].body.should.not.be.instanceof(Array);
-msgs[0].body.toString().should.equal('1');
+for (var i = 0; i < expected.length; i++) {
+  buf[i].should.equal(expected[i]);
+}
 
+// "json"
 
+msg = new Message;
 
+expected = [
+  0x02, 0x00, 0x00, 0x0b,
+  0x7b, 0x22, 0x6b, 0x22, 0x3a, 0x22, 0x74, 0x68, 0x78, 0x22, 0x7d
+];
 
+msg.write(ss.codec.json.encode({ k: 'thx' }), ss.codec.json.id);
+
+buf = msg.toBuffer();
+
+for (var i = 0; i < expected.length; i++) {
+  buf[i].should.equal(expected[i]);
+}
+
+// multipart -- multiple writes
+
+msg = new Message
+
+expected = [
+  0x00, 0x00, 0x00, 0x18,
+  0x01, 0x00, 0x00, 0x03,
+  0x68, 0x65, 0x79, 0x01,
+  0x00, 0x00, 0x05, 0x74,
+  0x68, 0x65, 0x72, 0x65,
+  0x01, 0x00, 0x00, 0x04,
+  0x74, 0x6f, 0x62, 0x69
+];
+
+msg.write('hey');
+msg.write('there');
+msg.write('tobi');
+
+buf = msg.toBuffer();
+
+buf.should.have.length(expected.length);
+
+for (var i = 0; i < expected.length; i++) {
+  buf[i].should.equal(expected[i]);
+}
+
+// multipart -- 2 formats
+
+msg = new Message;
+
+expected = [
+  0x00, 0x00, 0x00, 0x16,
+  0x01, 0x00, 0x00, 0x03,
+  0x68, 0x65, 0x79, 0x02,
+  0x00, 0x00, 0x0b, 0x7b,
+  0x22, 0x6b, 0x22, 0x3a,
+  0x22, 0x74, 0x68, 0x78,
+  0x22, 0x7d
+];
+
+msg.write('hey');
+msg.write(ss.codec.json.encode({ k: 'thx' }), ss.codec.json.id);
+
+buf = msg.toBuffer();
+
+for (var i = 0; i < expected.length; i++) {
+  buf[i].should.equal(expected[i]);
+}
