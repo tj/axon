@@ -20,6 +20,13 @@ pub.bind(3000, function(){
       c.should.equal(3);
     });
 
+    sub.on('hai', function(a, b, c){
+      arguments.length.should.equal(3);
+      a.should.equal(4);
+      b.should.equal(5);
+      c.should.equal(6);
+    });
+
     sub.on('baz', function(a){
       arguments.length.should.equal(1);
       a.should.have.property('name', 'tobi');
@@ -30,6 +37,7 @@ pub.bind(3000, function(){
     setTimeout(function(){
       pub.emit('foo');
       pub.emit('bar', 1, 2, 3);
+      pub.emit([ 'hai', 4, 5, 6 ]);
       pub.emit('baz', { name: 'tobi' });
     }, 20);
   });
