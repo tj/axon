@@ -5,22 +5,24 @@ var ss = require('../')
 var pub = ss.socket('emitter')
   , sub = ss.socket('emitter');
 
-var msgs = [];
-
 // test basic 1-1 pub/sub emitter style
 
 pub.bind(3000, function(){
   sub.connect(3000, function(){
     sub.on('foo', function(){
-      msgs.push(['foo']);
+      arguments.length.should.equal(0);
     });
-    
+
     sub.on('bar', function(a, b, c){
-      msgs.push(['bar', a, b, c]);
+      arguments.length.should.equal(3);
+      a.should.equal(1);
+      b.should.equal(2);
+      c.should.equal(3);
     });
-    
+
     sub.on('baz', function(a){
-      msgs.push(['baz', a]);
+      arguments.length.should.equal(1);
+      a.should.have.property('name', 'tobi');
       pub.close();
       sub.close();
     });
