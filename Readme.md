@@ -188,10 +188,10 @@ ss.codec.define('json', {
 
 ## What's it good for?
 
-  Super sockets are not meant to combat zeromq nor provide feature parity,
+  Axon is not meant to combat zeromq nor provide feature parity,
   but provide a nice solution when you don't need the insane
   nanosecond latency or language interoperability that zeromq provides
-  as super sockets do not rely on any third-party compiled libraries.
+  as axon does not rely on any third-party compiled libraries.
 
 ## Running tests
 
