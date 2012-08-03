@@ -200,6 +200,11 @@ $ npm install
 $ make test
 ```
 
+## Authors
+
+  - [visionmedia](http://github.com/visionmedia)
+  - [gjohnson](https://github.com/gjohnson)
+
 ## Links
 
   - [Screencast](https://vimeo.com/45818408)
