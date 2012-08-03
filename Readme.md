@@ -1,10 +1,10 @@
-# Super Sockets
+# Axon
 
-  Super Sockets is a message-oriented socket library for node.js heavily inspired by zeromq.
+  Axon is a message-oriented socket library for node.js heavily inspired by zeromq.
 
 ## Installation
 
-    $ npm install super-sockets
+    $ npm install axon
 
 ## Features
 
