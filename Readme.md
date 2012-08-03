@@ -23,8 +23,8 @@
 `PushSocket`s distribute messages round-robin:
 
 ```js
-var ss = require('super-sockets')
-  , sock = ss.socket('push');
+var axon = require('axon')
+  , sock = axon.socket('push');
 
 sock.bind(3000);
 console.log('push server started');
@@ -37,8 +37,8 @@ setInterval(function(){
 Receiver of `PushSocket` messages:
 
 ```js
-var ss = require('super-sockets')
-  , sock = ss.socket('pull');
+var axon = require('axon')
+  , sock = axon.socket('pull');
 
 sock.connect(3000);
 
@@ -63,8 +63,8 @@ to push results:
 `PubSocket`s send messages to all subscribers without queueing:
 
 ```js
-var ss = require('super-sockets')
-  , sock = ss.socket('pub');
+var axon = require('axon')
+  , sock = axon.socket('pub');
 
 sock.bind(3000);
 console.log('pub server started');
@@ -77,8 +77,8 @@ setInterval(function(){
 `SubSocket` provides selective reception of messages from a `PubSocket`:
 
 ```js
-var ss = require('super-sockets')
-  , sock = ss.socket('sub');
+var axon = require('axon')
+  , sock = axon.socket('sub');
 
 sock.connect(3000);
 
@@ -96,8 +96,8 @@ the "json" codec. Currently we simply choose define the `EmitterSocket` as a `Pu
 server.js:
 
 ```js
-var ss = require('super-sockets')
-  , sock = ss.socket('emitter');
+var axon = require('axon')
+  , sock = axon.socket('emitter');
 
 sock.bind(3000);
 console.log('pub server started');
@@ -110,8 +110,8 @@ setInterval(function(){
 client.js:
 
 ```js
-var ss = require('super-sockets')
-  , sock = ss.socket('emitter');
+var axon = require('axon')
+  , sock = axon.socket('emitter');
 
 sock.connect(3000);
 console.log('sub client connected');
@@ -146,9 +146,9 @@ sock.on('login', function(user){
   here is the JSON codec:
 
 ```js
-var ss = require('super-sockets');
+var axon = require('axon');
 
-ss.codec.define('json', {
+axon.codec.define('json', {
   encode: JSON.stringify,
   decode: JSON.parse
 });
@@ -188,10 +188,10 @@ ss.codec.define('json', {
 
 ## What's it good for?
 
-  Super sockets are not meant to combat zeromq nor provide feature parity,
+  Axon is not meant to combat zeromq nor provide feature parity,
   but provide a nice solution when you don't need the insane
   nanosecond latency or language interoperability that zeromq provides
-  as super sockets do not rely on any third-party compiled libraries.
+  as axon does not rely on any third-party compiled libraries.
 
 ## Running tests
 
