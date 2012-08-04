@@ -5,7 +5,7 @@ var ss = require('..')
 
 program
   .option('-t, --per-tick <n>', 'messages per tick [1000]', parseInt)
-  .option('-s, --size <n>', 'message sizein bytes [1024]', parseInt)
+  .option('-s, --size <n>', 'message size in bytes [1024]', parseInt)
   .parse(process.argv)
 
 sock.bind(3000);
