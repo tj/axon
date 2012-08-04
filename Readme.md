@@ -121,6 +121,23 @@ sock.on('login', function(user){
 });
 ```
 
+## Binding / Connecting
+
+  In addition to passing a portno, binding to INADDR_ANY by default, you
+  may also specify the hostname via `.bind(port, host)`, another alternative
+  is to specify the url much like zmq via `tcp://<hostname>:<portno>`, thus
+  the following are equivalent:
+
+```
+sock.bind(3000)
+sock.bind(3000, '0.0.0.0')
+sock.bind('tcp://0.0.0.0:3000')
+
+sock.connect(3000)
+sock.connect(3000, '0.0.0.0')
+sock.connect('tcp://0.0.0.0:3000')
+```
+
 ## Protocol
 
   The wire protocol is simple and very much zeromq-like, where `<length>` is
