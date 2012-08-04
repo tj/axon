@@ -1,13 +1,12 @@
 
 var ss = require('..')
-  , decoder = new ss.Decoder
+  , parser = new ss.Parser
   , should = require('should')
-  , msgs
-  , decoder;
+  , msg;
 
 // capture messages
 
-decoder.onmessage = function(body, multipart){
+parser.onmessage = function(body, multipart){
   msgs.push({ body: body, multipart: multipart });
 };
 
@@ -15,9 +14,9 @@ decoder.onmessage = function(body, multipart){
 
 msgs = [];
 
-decoder.write(new Buffer([0x01, 0x00, 0x00, 0x01, 0x30]));
-decoder.write(new Buffer([0x01, 0x00, 0x00, 0x01, 0x30]));
-decoder.write(new Buffer([0x01, 0x00, 0x00, 0x01, 0x30]));
+parser.write(new Buffer([0x01, 0x00, 0x00, 0x01, 0x30]));
+parser.write(new Buffer([0x01, 0x00, 0x00, 0x01, 0x30]));
+parser.write(new Buffer([0x01, 0x00, 0x00, 0x01, 0x30]));
 
 for (var i = 0; i < 3; ++i) {
   msgs[i].body.toString().should.equal('0');
@@ -35,7 +34,7 @@ var bytes = [
   0x01, 0x00, 0x00, 0x01, 0x32];
 
 for (var i = 0, len = bytes.length; i < len; ++i) {
-  decoder.write(new Buffer([bytes[i]]));
+  parser.write(new Buffer([bytes[i]]));
 }
 
 for (var i = 0; i < 5; ++i) {
@@ -46,7 +45,7 @@ for (var i = 0; i < 5; ++i) {
 
 msgs = [];
 
-decoder.write(new Buffer([
+parser.write(new Buffer([
   0x00, 0x00, 0x00, 0x12,
   0x01, 0x00, 0x00, 0x05, 0x68, 0x65, 0x6c, 0x6c, 0x6f,
   0x01, 0x00, 0x00, 0x05, 0x77, 0x6f, 0x72, 0x6c, 0x64
@@ -69,7 +68,7 @@ var bytes = [
 ];
 
 for (var i = 0, len = bytes.length; i < len; ++i) {
-  decoder.write(new Buffer([bytes[i]]));
+  parser.write(new Buffer([bytes[i]]));
 }
 
 msgs[0].body.should.be.instanceof(Array);
