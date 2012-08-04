@@ -8,7 +8,8 @@
   },
   "devDependencies": {
     "should": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "commander": "*"
   },
   "keywords": ["zmq", "zeromq", "pubsub", "socket", "emitter", "ipc", "rpc"]
 }
