@@ -28,8 +28,8 @@ pull.on('message', function(msg){
         pull.connect(3000);
       });
       break;
-    case 1000:
-      for (var i = 0; i < 999; ++i) {
+    case 300:
+      for (var i = 0; i < 299; ++i) {
         msgs[i].should.equal(i.toString());
       }
       clearInterval(id);
