@@ -25,7 +25,6 @@ pull.on('message', function(msg){
     case 10:
       pull.close();
       pull.on('close', function(){
-        if (1000 == msgs.length) return;
         pull.removeAllListeners('close');
         pull.connect(3000);
       });
