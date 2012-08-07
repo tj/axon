@@ -1,6 +1,7 @@
 
 var ss = require('../')
-  , should = require('should');
+  , should = require('should')
+  , assert = require('assert');
 
 var push = ss.socket('push')
   , pull = ss.socket('pull');
@@ -25,6 +26,7 @@ pull.on('message', function(msg){
       pull.close();
       pull.on('close', function(){
         if (1000 == msgs.length) return;
+        pull.removeAllListeners('close');
         pull.connect(3000);
       });
       break;
@@ -32,7 +34,9 @@ pull.on('message', function(msg){
       for (var i = 0; i < 299; ++i) {
         msgs[i].should.equal(i.toString());
       }
+
       clearInterval(id);
+
       push.close();
       pull.close();
       break;
