@@ -91,7 +91,7 @@ sock.on('message', function(msg){
 
 `EmitterSocket`'s send and receive messages behaving like regular node `EventEmitter`s.
 This is achieved by using pub / sub sockets behind the scenes, automatically assigned
-the "json" codec. Currently we simply choose define the `EmitterSocket` as a `PubSocket` if you `.bind()`, and `SubSocket` if you `.connect()`, providing the natural API you're used to:
+the "json" codec. Currently we simply define the `EmitterSocket` as a `PubSocket` if you `.bind()`, and `SubSocket` if you `.connect()`, providing the natural API you're used to:
 
 server.js:
 
@@ -205,7 +205,7 @@ ss.codec.define('json', {
 
 ## What's it good for?
 
-  Super sockets are not meant to combat zeromq nor provide feature parity,
+  Axon are not meant to combat zeromq nor provide feature parity,
   but provide a nice solution when you don't need the insane
   nanosecond latency or language interoperability that zeromq provides
   as axon do not rely on any third-party compiled libraries.
