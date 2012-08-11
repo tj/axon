@@ -5,7 +5,7 @@ var ss = require('../')
 var router = ss.socket('router')
   , worker = ss.socket('stream');
 
-worker.option('identity', 'myworker');
+worker.set('identity', 'myworker');
 worker.connect(3000);
 
 worker.on('message', function(msg){
@@ -14,7 +14,7 @@ worker.on('message', function(msg){
   router.close();
 });
 
-router.option('identity', 'myrouter');
+router.set('identity', 'myrouter');
 router.bind(3000);
 
 setTimeout(function(){
