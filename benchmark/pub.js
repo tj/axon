@@ -1,13 +1,14 @@
 
 var ss = require('..')
-  , sock = ss.socket('pub')
   , program = require('commander');
 
 program
+  .option('-T, --type <name>', 'socket type [pub]', 'pub')
   .option('-t, --per-tick <n>', 'messages per tick [1000]', parseInt)
   .option('-s, --size <n>', 'message size in bytes [1024]', parseInt)
   .parse(process.argv)
 
+var sock = ss.socket(program.type);
 sock.bind(3000);
 console.log('pub bound');
 

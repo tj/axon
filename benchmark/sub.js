@@ -1,13 +1,14 @@
 
 
 var ss = require('..')
-  , sock = ss.socket('sub')
   , program = require('commander');
 
 program
+  .option('-T, --type <name>', 'socket type [sub]', 'sub')
   .option('-s, --size <n>', 'message size in bytes [1024]', parseInt)
   .parse(process.argv)
 
+var sock = ss.socket(program.type);
 sock.connect(3000);
 
 var n = 0;
