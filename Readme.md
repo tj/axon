@@ -368,9 +368,7 @@ $ make test
 
   - more tests
   - code cov
-  - acks
   - weighted fair queuing
-  - use mocha for tests
   - cap batch size
   - zero-copy for batches...
   - make batching configurable... disable for lower latency
