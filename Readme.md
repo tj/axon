@@ -98,7 +98,7 @@ sock.on('message', function(msg){
 
 `EmitterSocket`'s send and receive messages behaving like regular node `EventEmitter`s.
 This is achieved by using pub / sub sockets behind the scenes and automatically formatting
-messsages with the "json" codec. Currently we simply define the `EmitterSocket` as a `PubSocket` if you `.bind()`, and `SubSocket` if you `.connect()`, providing the natural API you're used to:
+messages with the "json" codec. Currently we simply define the `EmitterSocket` as a `PubSocket` if you `.bind()`, and `SubSocket` if you `.connect()`, providing the natural API you're used to:
 
 server.js:
 
@@ -130,10 +130,10 @@ sock.on('login', function(user){
 
 ## Req / Rep
 
-`ReqSocket`s send and recieve messages, queueing messages on remote disconnects. There
-is no "lock step" involved, allowing messages sent later to recieve replies prior to
-previously sent messages. `RepSocket`s reply to recieved messages, there is no concept of `send()`. Each
-recieved message will have a `reply` callback, which will send the response back to the remote peer:
+`ReqSocket`s send and receive messages, queueing messages on remote disconnects. There
+is no "lock step" involved, allowing messages sent later to receive replies prior to
+previously sent messages. `RepSocket`s reply to received messages, there is no concept of `send()`. Each
+received message will have a `reply` callback, which will send the response back to the remote peer:
 
 client.js
 ```js
@@ -172,7 +172,7 @@ sock.on('message', function(msg, reply){
 multipart messages by framing the "identity" first, the delimiter second, and then
 the actual message body.
 
-__Note:__ This will probably change due to the awkwardness of handling your own delimeters.
+__Note:__ This will probably change due to the awkwardness of handling your own delimiters.
 
 client.js
 ```js
@@ -216,7 +216,7 @@ bar.on('message', function(msg, reply){
 
 `DealerSocket`s receive messages and round-robin sent messages. There is no
 correlation between the two. They can be thought of as a `PushSocket` and `PullSocket`
-combined. Here the dealer the serves as an "echo-service", sending whatever is recieves:
+combined. Here the dealer the serves as an "echo-service", sending whatever is receives:
 
 dealer.js
 ```js
@@ -254,9 +254,9 @@ Every socket has associated options that can be configured via `get/set`.
   - `identity` - The "name" of the socket that uniqued identifies it.
   - `retry timeout` - The amount of time until retries will not be attempted again.
 
-PubSockets additionaly have options for batching:
+PubSockets additionally have options for batching:
 
-  - `batch max` - Max amount of messags to buffer in memory.
+  - `batch max` - Max amount of messages to buffer in memory.
   - `batch ttl` - Amount of time to buffer messages before sending.
 
 ## Binding / Connecting
@@ -311,7 +311,7 @@ axon.codec.define('json', {
 
 __Note:__ codecs must be defined on both the sending and receiving ends, otherwise
 axon cannot properly decode the messages. You may of course ignore this
-feature all together and simply paaxon encoded data to `.send()`.
+feature all together and simply pass encoded data to `.send()`.
 
 ## Performance
 
