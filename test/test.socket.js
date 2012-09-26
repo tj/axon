@@ -6,10 +6,6 @@
 var ss = require('../')
   , should = require('should');
 
-// version
-
-ss.version.should.match(/^\d+\.\d+\.\d+$/)
-
 // socket types
 
 ss.socket('stream').should.be.an.instanceof(ss.Socket);
