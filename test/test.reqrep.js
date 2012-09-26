@@ -1,22 +1,19 @@
 
-var ss = require('../')
+var axon = require('..')
   , should = require('should');
 
-var server = ss.socket('rep')
-  , client = ss.socket('req');
+var req = axon.socket('req')
+  , rep = axon.socket('rep');
 
-server.bind(3000);
-client.connect(3000);
+req.bind(3000);
+rep.connect(3000);
 
-server.on('message', function(msg, reply){
-  msg.toString().should.equal('hey there tobi');
-  reply('tobi says thanks');
+rep.on('message', function(msg, reply){
+  reply('got "' + msg + '"');
 });
 
-client.on('message', function(msg){
-  msg.toString().should.equal('tobi says thanks');
-  client.close();
-  server.close();
+req.send('hello', function(msg){
+  msg.toString().should.equal('got "hello"');
+  req.close();
+  rep.close();
 });
-
-client.send('hey there tobi');
