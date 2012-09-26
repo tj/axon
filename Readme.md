@@ -137,7 +137,7 @@ recieved message will have a `reply` callback, which will send the response back
 
 client.js
 ```js
-var axon = require('../..')
+var axon = require('axon')
   , sock = axon.socket('req');
 
 sock.connect(3000);
@@ -154,7 +154,7 @@ setInterval(function(){
 server.js
 ```js
 
-var axon = require('../..')
+var axon = require('axon')
   , sock = axon.socket('rep');
 
 sock.bind(3000);
@@ -176,7 +176,7 @@ __Note:__ This will probably change due to the awkwardness of handling your own 
 
 client.js
 ```js
-var axon = require('../..')
+var axon = require('axon')
   , sock = axon.socket('router');
 
 sock.bind(3000);
@@ -193,7 +193,7 @@ setInterval(function(){
 
 server.js
 ```js
-var axon = require('../..')
+var axon = require('axon')
   , foo = axon.socket('rep')
   , bar = axon.socket('rep');
 
@@ -220,7 +220,7 @@ combined. Here the dealer the serves as an "echo-service", sending whatever is r
 
 dealer.js
 ```js
-var axon = require('../..')
+var axon = require('axon')
   , sock = axon.socket('dealer');
 
 sock.set('identity', 'echo-service');
@@ -233,7 +233,7 @@ sock.on('message', function(msg){
 
 client.js
 ```js
-var axon = require('../..')
+var axon = require('axon')
   , sock = axon.socket('router');
 
 sock.bind(3000);
