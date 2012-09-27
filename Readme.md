@@ -20,8 +20,6 @@
   - pub / sub
   - emitter
   - req / rep
-  - router
-  - dealer
 
 ## Push / Pull
 
@@ -163,88 +161,6 @@ sock.on('message', function(msg, reply){
   console.log('got: %s', msg.toString());
   reply('pong');
 });
-```
-
-## Router
-
-`RouterSocket`s send a message to an "identified" peer using the socket's "identity"
-(see `socket options`). Sent messages are not queued. The message sent leverages
-multipart messages by framing the "identity" first, the delimiter second, and then
-the actual message body.
-
-__Note:__ This will probably change due to the awkwardness of handling your own delimiters.
-
-client.js
-```js
-var axon = require('axon')
-  , sock = axon.socket('router');
-
-sock.bind(3000);
-
-sock.on('message', function(from, delim, msg){
-  console.log(msg.toString());
-});
-
-setInterval(function(){
-  sock.send('foo', '\u0000', 'hello foo');
-  sock.send('bar', '\u0000', 'hello bar');
-}, 150);
-```
-
-server.js
-```js
-var axon = require('axon')
-  , foo = axon.socket('rep')
-  , bar = axon.socket('rep');
-
-foo.set('identity', 'foo');
-foo.connect(3000);
-
-foo.on('message', function(msg, reply){
-  reply('foo: pong');
-});
-
-bar.set('identity', 'bar');
-bar.connect(3000);
-
-bar.on('message', function(msg, reply){
-  reply('bar says: pong');
-});
-```
-
-## Dealer
-
-`DealerSocket`s receive messages and round-robin sent messages. There is no
-correlation between the two. They can be thought of as a `PushSocket` and `PullSocket`
-combined. Here the dealer the serves as an "echo-service", sending whatever is receives:
-
-dealer.js
-```js
-var axon = require('axon')
-  , sock = axon.socket('dealer');
-
-sock.set('identity', 'echo-service');
-sock.connect(3000);
-
-sock.on('message', function(msg){
-  sock.send(msg);
-});
-```
-
-client.js
-```js
-var axon = require('axon')
-  , sock = axon.socket('router');
-
-sock.bind(3000);
-
-sock.on('message', function(from, msg){
-  console.log('%s said: %s', from.toString(), msg.toString());
-});
-
-setInterval(function(){
-  sock.send('echo-service', 'hey tobi');
-}, 500);
 ```
 
 ## Socket Options
