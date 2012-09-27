@@ -1,31 +1,21 @@
 
-var ss = require('../')
-  , should = require('should');
+var axon = require('..')
+  , should = require('should')
+  , req = axon.socket('req')
+  , rep = axon.socket('rep');
 
-var server = ss.socket('rep')
-  , client = ss.socket('req');
+req.format('json');
+rep.format('json');
 
-server.format('json');
-client.format('json');
+req.bind(3000);
+rep.connect(3000);
 
-server.bind(3000);
-client.connect(3000);
-
-server.on('message', function(msg, reply){
-  msg.should.have.property('cmd', 'hello');
-  reply({
-    error: null,
-    result: 'thanks'
-  });
+rep.on('message', function(obj, reply){
+  reply({ name: obj.name });
 });
 
-client.on('message', function(msg){
-  msg.should.have.property('error', null);
-  msg.should.have.property('result', 'thanks');
-  client.close();
-  server.close();
-});
-
-client.send({
-  cmd: 'hello'
+req.send({ name: 'Tobi' }, function(res){
+  res.should.eql({ name: 'Tobi' });
+  req.close();
+  rep.close();
 });
