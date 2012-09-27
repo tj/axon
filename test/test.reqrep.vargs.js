@@ -8,12 +8,12 @@ var req = axon.socket('req')
 req.bind(3000);
 rep.connect(3000);
 
-rep.on('message', function(msg, reply){
-  reply('got "' + msg + '"');
+rep.on('message', function(first, last, reply){
+  reply(first + ' ' + last)
 });
 
-req.send('hello', function(msg){
-  msg.toString().should.equal('got "hello"');
+req.send('tobi', 'ferret', function(msg){
+  msg.toString().should.equal('tobi ferret');
   req.close();
   rep.close();
 });
