@@ -18,8 +18,8 @@
 
   - push / pull
   - pub / sub
-  - emitter
   - req / rep
+  - emitter
 
 ## Push / Pull
 
@@ -89,6 +89,73 @@ sock.connect(3000);
 
 sock.on('message', function(msg){
   console.log(msg.toString());
+});
+```
+
+## Req / Rep
+
+`ReqSocket` is similar to a `PushSocket` in that it round-robins messages
+to connected `RepSocket`s, however it differs in that this communication is
+bi-directional, every `req.send()` _must_ provide a callback which is invoked
+when the `RepSocket` replies.
+
+```js
+var axon = require('axon')
+  , sock = axon.socket('req');
+
+req.bind(3000);
+
+req.send(img, function(res){
+  
+});
+```
+
+`RepSocket`s receive a `reply` callback that is used to respond to the request,
+you may have several of these nodes.
+
+```js
+var axon = require('axon')
+  , sock = axon.socket('rep');
+
+sock.connect(3000);
+
+sock.on('message', function(img, reply){
+  // resize the image
+  reply(img);
+});
+```
+
+ Like other sockets you may provide multiple arguments or an array of arguments,
+ followed by the callbacks. For example here we provide a task name of "resize"
+ to facilitate multiple tasks over a single socket:
+
+```js
+var axon = require('axon')
+  , sock = axon.socket('req');
+
+req.bind(3000);
+
+req.send('resize', img, function(res){
+  
+});
+```
+
+`RepSocket`s receive a `reply` callback that is used to respond to the request,
+you may have several of these nodes.
+
+```js
+var axon = require('axon')
+  , sock = axon.socket('rep');
+
+sock.connect(3000);
+
+sock.on('message', function(task, img, reply){
+  switch (task.toString()) {
+    case 'resize':
+      // resize the image
+      reply(img);
+      break;
+  }
 });
 ```
 
