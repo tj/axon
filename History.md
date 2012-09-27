@@ -1,4 +1,12 @@
 
+0.2.0 / 2012-09-27 
+==================
+
+  * add default random `identity`
+  * add `req.send()` callback support
+  * remove router / dealer
+  * change `ReqSocket` to round-robin send()s
+
 0.1.0 / 2012-09-24 
 ==================
 
