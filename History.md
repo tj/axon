@@ -1,4 +1,11 @@
 
+0.3.0 / 2012-10-05 
+==================
+
+  * add `Socket#address()` to help with ephemeral port binding. Closes #39
+  * add default identity of __PID__. Closes #35
+  * remove examples for router/dealer
+
 0.2.0 / 2012-09-27 
 ==================
 
