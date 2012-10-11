@@ -6,10 +6,11 @@ var ss = require('..')
 program
   .option('-T, --type <name>', 'socket type [sub]', 'sub')
   .option('-s, --size <n>', 'message size in bytes [1024]', parseInt)
+  .option('-u, --unix', 'use unix socket')
   .parse(process.argv)
 
 var sock = ss.socket(program.type);
-sock.connect(3000);
+sock.connect(program.unix ? 'unix:///tmp/axonbenchmark' : 3000);
 
 var n = 0;
 var ops = 200;
