@@ -1,5 +1,5 @@
 
-var ss = require('../')
+var ss = require('..')
   , should = require('should');
 
 var pub = ss.socket('pub-emitter')
