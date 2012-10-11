@@ -11,9 +11,9 @@ var worker = ss.socket('pub-emitter')
 
 /*
 
-                    +--> a
-  worker ---> relay |--> b 
-                    +--> c
+                    <--- a
+  worker ---> relay <--- b 
+                    <--- c
 
 */
 
