@@ -8,6 +8,7 @@
     "configurable": "0.0.1"
   },
   "devDependencies": {
+    "better-assert": "*",
     "should": "*",
     "mocha": "*",
     "commander": "*"
