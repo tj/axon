@@ -100,7 +100,8 @@ var axon = require('axon')
   , sock = axon.socket('sub');
 
 sock.connect(3000);
-sock.subscribe('user:*:login');
+sock.subscribe('user:login');
+sock.subscribe('upload:*:progress');
 
 sock.on('message', function(topic, msg){
 
@@ -176,7 +177,7 @@ sock.on('message', function(task, img, reply){
 
 ## PubEmitter / SubEmitter
 
-  `PubEmitter` and `SubEmitter` are higher-level `Pub` / `Sub` sockets, using the "json" codec to behave much like node's `EventEmitter`.
+  `PubEmitter` and `SubEmitter` are higher-level `Pub` / `Sub` sockets, using the "json" codec to behave much like node's `EventEmitter`. When a `SubEmitter`'s `.on()` method is invoked, the event name is `.subscribe()`d for you.
 
 app.js:
 
@@ -199,8 +200,16 @@ var axon = require('axon')
 
 sock.bind(3000);
 
-sock.on('login', function(user){
+sock.on('user:login', function(user){
   console.log('%s signed in', user.name);
+});
+
+sock.on('user:*', function(action, user){
+  console.log('%s %s', user.name, action);
+});
+
+sock.on('*', function(event){
+  console.log(arguments);
 });
 ```
 
