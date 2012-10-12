@@ -1,9 +1,9 @@
 
-var ss = require('../')
+var ss = require('..')
   , should = require('should');
 
-var pub = ss.socket('emitter')
-  , sub = ss.socket('emitter');
+var pub = ss.socket('pub-emitter')
+  , sub = ss.socket('sub-emitter');
 
 // test basic 1-1 pub/sub emitter style
 

@@ -19,7 +19,7 @@
   - push / pull
   - pub / sub
   - req / rep
-  - emitter
+  - pub-emitter / sub-emitter
 
 ## Push / Pull
 
@@ -159,34 +159,30 @@ sock.on('message', function(task, img, reply){
 });
 ```
 
-## EmitterSocket
+## PubEmitter / SubEmitter
 
-`EmitterSocket`'s send and receive messages behaving like regular node `EventEmitter`s.
-This is achieved by using pub / sub sockets behind the scenes and automatically formatting
-messages with the "json" codec. Currently we simply define the `EmitterSocket` as a `PubSocket` if you `.bind()`, and `SubSocket` if you `.connect()`, providing the natural API you're used to:
+  `PubEmitter` and `SubEmitter` are higher-level `Pub` / `Sub` sockets, using the "json" codec to behave much like node's `EventEmitter`.
 
-server.js:
+app.js:
 
 ```js
 var axon = require('axon')
-  , sock = axon.socket('emitter');
+  , sock = axon.socket('pub-emitter');
 
-sock.bind(3000);
-console.log('pub server started');
+sock.connect(3000);
 
 setInterval(function(){
   sock.emit('login', { name: 'tobi' });
 }, 500);
 ```
 
-client.js:
+logger.js:
 
 ```js
 var axon = require('axon')
-  , sock = axon.socket('emitter');
+  , sock = axon.socket('sub-emitter');
 
-sock.connect(3000);
-console.log('sub client connected');
+sock.bind(3000);
 
 sock.on('login', function(user){
   console.log('%s signed in', user.name);
