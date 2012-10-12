@@ -1,4 +1,14 @@
 
+0.4.0 / 2012-10-12 
+==================
+
+  * add emitter wildcard support
+  * add sub socket subscription support
+  * add `pub-emitter`
+  * add `sub-emitter`
+  * perf: remove `.concat()` usage, ~10% gain
+  * remove greetings
+
 0.3.2 / 2012-10-08 
 ==================
 
