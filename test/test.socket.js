@@ -3,14 +3,17 @@
  * Module dependencies.
  */
 
-var ss = require('../')
-  , should = require('should');
+var axon = require('../')
+  , assert = require('better-assert');
 
 // socket types
 
-ss.socket('stream').should.be.an.instanceof(ss.Socket);
-ss.socket('pub').should.be.an.instanceof(ss.PubSocket);
-ss.socket('sub').should.be.an.instanceof(ss.SubSocket);
-ss.socket('push').should.be.an.instanceof(ss.PushSocket);
-ss.socket('pull').should.be.an.instanceof(ss.PullSocket);
+assert(axon.socket('stream') instanceof axon.Socket);
+assert(axon.socket('pub') instanceof axon.PubSocket);
+assert(axon.socket('sub') instanceof axon.SubSocket);
+assert(axon.socket('push') instanceof axon.PushSocket);
+assert(axon.socket('pull') instanceof axon.PullSocket);
+assert(axon.socket('sub-emitter') instanceof axon.SubEmitterSocket);
+assert(axon.socket('pub-emitter') instanceof axon.PubEmitterSocket);
+
 process.exit();
