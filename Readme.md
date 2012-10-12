@@ -79,7 +79,7 @@ setInterval(function(){
 }, 500);
 ```
 
-`SubSocket` simply recieves any messages from a `PubSocket`:
+`SubSocket` simply receives any messages from a `PubSocket`:
 
 ```js
 var axon = require('axon')
@@ -89,6 +89,21 @@ sock.connect(3000);
 
 sock.on('message', function(msg){
   console.log(msg.toString());
+});
+```
+
+ `SubSocket`s may optionally `.subscribe()` to one or more "topics" (the first multipart value),
+ using string patterns or regular expressions:
+
+```js
+var axon = require('axon')
+  , sock = axon.socket('sub');
+
+sock.connect(3000);
+sock.subscribe('user:*:login');
+
+sock.on('message', function(topic, msg){
+
 });
 ```
 
@@ -342,17 +357,6 @@ $ make test
 ## Links
 
   - [Screencast](https://vimeo.com/45818408)
-
-## Todo
-
-  - more tests
-  - code cov
-  - weighted fair queuing
-  - cap batch size
-  - zero-copy for batches...
-  - make batching configurable... disable for lower latency
-  - subscriptions
-  - ...
 
 ## License
 
