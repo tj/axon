@@ -320,6 +320,17 @@ feature all together and simply pass encoded data to `.send()`.
 
 I haven't profiled or tuned anything yet but so far for on my macbook pro.
 
+15 byte messages:
+
+```
+      min: 280 ops/s
+     mean: 472,109 ops/s
+   median: 477,309 ops/s
+    total: 10,758,780 ops in 24.633s
+  through: 6.753573417663574 mb/s
+
+```
+
 64 byte messages:
 
 ```
