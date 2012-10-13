@@ -336,22 +336,24 @@ I haven't profiled or tuned anything yet but so far for on my macbook pro.
 
 ```
 
-      min: 1,851 ops/s
-     mean: 34,0156 ops/s
-   median: 449,660 ops/s
-    total: 329,831 ops in 4.241s
-  through: 332.18359375 mb/s
+      min: 280 ops/s
+     mean: 382,829 ops/s
+   median: 382,764 ops/s
+    total: 3,333,581 ops in 15.126s
+  through: 373.8564453125 mb/s
 
 ```
 
   8k messages:
 
 ```
+
       min: 392 ops/s
      mean: 92,778 ops/s
    median: 87,943 ops/s
     total: 1,257,430 ops in 21.735s
   through: 724.828125 mb/s
+
 ````
 
 ## What's it good for?
