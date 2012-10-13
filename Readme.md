@@ -324,11 +324,11 @@ I haven't profiled or tuned anything yet but so far for on my macbook pro.
 
 ```
 
-      min: 22,085 ops/s
-     mean: 585,944 ops/s
-   median: 606,176 ops/s
-    total: 326,7126 ops in 6.5s
-  through: 35.76318359375 mb/s
+      min: 218 ops/s
+     mean: 462,286 ops/s
+   median: 461,512 ops/s
+    total: 6,455,160 ops in 15.488s
+  through: 28.2156982421875 mb/s
 
 ```
 
