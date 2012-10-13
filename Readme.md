@@ -344,6 +344,16 @@ I haven't profiled or tuned anything yet but so far for on my macbook pro.
 
 ```
 
+  8k messages:
+
+```
+      min: 392 ops/s
+     mean: 92,778 ops/s
+   median: 87,943 ops/s
+    total: 1,257,430 ops in 21.735s
+  through: 724.828125 mb/s
+````
+
 ## What's it good for?
 
   Axon are not meant to combat zeromq nor provide feature parity,
