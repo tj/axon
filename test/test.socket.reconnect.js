@@ -16,7 +16,7 @@ pull.connect(3000);
 
 var id = setInterval(function(){
   push.send(String(n++));
-}, 1);
+}, 2);
 
 pull.on('message', function(msg){
   msgs.push(msg.toString());
@@ -24,9 +24,10 @@ pull.on('message', function(msg){
   switch (msgs.length) {
     case 10:
       pull.close();
-      pull.on('close', function(){
-        pull.removeAllListeners('close');
-        pull.connect(3000);
+      pull.once('close', function(){
+        setTimeout(function(){
+          pull.connect(3000);
+        }, 50);
       });
       break;
     case 300:
