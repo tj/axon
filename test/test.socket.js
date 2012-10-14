@@ -8,7 +8,6 @@ var axon = require('../')
 
 // socket types
 
-assert(axon.socket('stream') instanceof axon.Socket);
 assert(axon.socket('pub') instanceof axon.PubSocket);
 assert(axon.socket('sub') instanceof axon.SubSocket);
 assert(axon.socket('push') instanceof axon.PushSocket);
