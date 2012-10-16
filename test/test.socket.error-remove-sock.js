@@ -29,12 +29,19 @@ pull.on('ignored error', function(err){
   pull.close();
 });
 
-var pending = 3;
-pull.on('connect', function(){
-  --pending || connected();
-});
+a.on('connect', connect);
+b.on('connect', connect);
+c.on('connect', connect);
 
-function connected() {
+var pending = 3;
+function connect() {
+  --pending || done();
+}
+
+function done() {
+  assert(1 == a.socks.length);
+  assert(1 == b.socks.length);
+  assert(1 == c.socks.length);
   assert(3 == pull.socks.length);
   pull.socks[0]._destroy(new Error('boom'));
 }
