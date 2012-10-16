@@ -16,33 +16,25 @@ pull.connect(3003);
 
 pull.on('error', function(err){
   assert('boom' == err.message);
+  assert(2 == pull.socks.length);
+  var err = new Error('faux EPIPE');
+  err.code = 'EPIPE';
+  pull.socks[0]._destroy(err);
 });
 
-// TODO: dont emit 3 times
+pull.on('ignored error', function(err){
+  assert('EPIPE' == err.code);
+  assert(1 == pull.socks.length);
+  c.close();
+  pull.close();
+});
+
 var pending = 3;
 pull.on('connect', function(){
   --pending || connected();
 });
 
 function connected() {
-  var sa = pull.socks[0];
-  var sb = pull.socks[1];
-  var sc = pull.socks[2];
-
   assert(3 == pull.socks.length);
-
-  sa._destroy(new Error('boom'));
-  assert(2 == pull.socks.length);
-  assert(sb == pull.socks[0]);
-  assert(sc == pull.socks[1]);
-
-  var err = new Error('faux EPIPE');
-  err.code = 'EPIPE';
-  sb._destroy(err);
-  assert(1 == pull.socks.length);
-  assert(sc == pull.socks[0]);
-  a.close();
-  b.close();
-  c.close();
-  pull.close();
+  pull.socks[0]._destroy(new Error('boom'));
 }
