@@ -17,5 +17,5 @@ push.on('ignored error', function(err){
 push.on('connect', function(){
   var err = new Error('faux ECONNREFUSED');
   err.code = 'ECONNREFUSED';
-  push.socks[0].emit('error', err);
+  push.socks[0]._destroy(err);
 });

@@ -31,14 +31,14 @@ function connected() {
 
   assert(3 == pull.socks.length);
 
-  sa.emit('error', new Error('boom'));
+  sa._destroy(new Error('boom'));
   assert(2 == pull.socks.length);
   assert(sb == pull.socks[0]);
   assert(sc == pull.socks[1]);
 
   var err = new Error('faux EPIPE');
   err.code = 'EPIPE';
-  sb.emit('error', err);
+  sb._destroy(err);
   assert(1 == pull.socks.length);
   assert(sc == pull.socks[0]);
   a.close();
