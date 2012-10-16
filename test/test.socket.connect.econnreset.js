@@ -8,15 +8,10 @@ var push = axon.socket('push')
 pull.bind(3000);
 push.connect(3000);
 
-pull.on('message', function(msg){
-  assert('hello' == msg.toString());
-  push.close();
-  pull.close();
-});
-
 push.on('ignored error', function(err){
   assert('ECONNRESET' == err.code);
-  push.send('hello');
+  push.close();
+  pull.close();
 });
 
 push.on('connect', function(){
