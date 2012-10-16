@@ -1,4 +1,14 @@
 
+0.4.1 / 2012-10-16 
+==================
+
+  * add removal of sockets on error
+  * add handling of __ECONNRESET__, __ECONNREFUSED__, and __EPIPE__. Closes #17
+  * add immediate closing of sockets on `.close()`
+  * fix "bind" event. Closes #53
+  * fix 'close' event for server sockets
+  * remove "stream" socket type for now
+
 0.4.0 / 2012-10-12 
 ==================
 
