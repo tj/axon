@@ -14,6 +14,17 @@
   - supports arbitrary binary message (msgpack, json, BLOBS, etc)
   - supports JSON messages out of the box
 
+## Events
+
+  - `close` when server or connection is closed
+  - `error` (err) when an-handled socket error occurs
+  - `ignored error` (err) when an axon-handled socket error occurs, but is ignored
+  - `socket error` (err) emitted regardless of handling, for logging purposes
+  - `reconnect attempt` when a reconnection attempt is made
+  - `connect` when connected to the peer, or a peer connection is accepted
+  - `disconnect` when an accepted peer disconnects
+  - `bind` when the server is bound
+
 ## Patterns
 
   - push / pull
