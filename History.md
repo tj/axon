@@ -2,6 +2,7 @@
 0.4.2 / 2012-10-18 
 ==================
 
+  * add 30% throughput increase for sub-emitter by removing some indirection
   * add escaping of regexp chars for `SubSocket#subscribe()`
   * fix non-multipart `SubEmitterSocket` logic
 
