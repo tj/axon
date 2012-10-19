@@ -1,4 +1,10 @@
 
+0.4.2 / 2012-10-18 
+==================
+
+  * add escaping of regexp chars for `SubSocket#subscribe()`
+  * fix non-multipart `SubEmitterSocket` logic
+
 0.4.1 / 2012-10-16 
 ==================
 
