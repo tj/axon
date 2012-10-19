@@ -30,15 +30,16 @@ sub.on('*:*', function(topic, action, name){
   --pending || done();
 });
 
-sub.on('weird[chars]', function(arg){
-  assert('hello' == arg);
+sub.on('weird[chars]{*}', function(a, b){
+  assert('some stuff' == a);
+  assert('hello' == b);
   --pending || done();
 });
 
 sub.connect(3000, function(){
   pub.emit('user:login', 'tobi');
   pub.emit('user:logout', 'tobi');
-  pub.emit('weird[chars]', 'hello');
+  pub.emit('weird[chars]{some stuff}', 'hello');
 });
 
 function done() {
