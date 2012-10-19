@@ -3,7 +3,7 @@ var axon = require('..')
   , assert = require('better-assert')
   , pub = axon.socket('pub-emitter')
   , sub = axon.socket('sub-emitter')
-  , pending = 6
+  , pending = 7
 
 pub.bind(3000);
 
@@ -30,9 +30,15 @@ sub.on('*:*', function(topic, action, name){
   --pending || done();
 });
 
+sub.on('weird[chars]', function(arg){
+  assert('hello' == arg);
+  --pending || done();
+});
+
 sub.connect(3000, function(){
   pub.emit('user:login', 'tobi');
   pub.emit('user:logout', 'tobi');
+  pub.emit('weird[chars]', 'hello');
 });
 
 function done() {
