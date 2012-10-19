@@ -131,9 +131,9 @@ when the `RepSocket` replies.
 var axon = require('axon')
   , sock = axon.socket('req');
 
-req.bind(3000);
+sock.bind(3000);
 
-req.send(img, function(res){
+sock.send(img, function(res){
   
 });
 ```
@@ -161,15 +161,14 @@ sock.on('message', function(img, reply){
 var axon = require('axon')
   , sock = axon.socket('req');
 
-req.bind(3000);
+sock.bind(3000);
 
-req.send('resize', img, function(res){
+sock.send('resize', img, function(res){
   
 });
 ```
 
-`RepSocket`s receive a `reply` callback that is used to respond to the request,
-you may have several of these nodes.
+ Respond to the "resize" task:
 
 ```js
 var axon = require('axon')
@@ -225,43 +224,6 @@ sock.on('*', function(event){
 });
 ```
 
-## Req / Rep
-
-`ReqSocket`s send and receive messages, queueing messages on remote disconnects. There
-is no "lock step" involved, allowing messages sent later to receive replies prior to
-previously sent messages. `RepSocket`s reply to received messages, there is no concept of `send()`. Each
-received message will have a `reply` callback, which will send the response back to the remote peer:
-
-client.js
-```js
-var axon = require('axon')
-  , sock = axon.socket('req');
-
-sock.connect(3000);
-
-sock.on('message', function(msg){
-  console.log('got: %s', msg.toString());
-});
-
-setInterval(function(){
-  sock.send('ping');
-}, 150);
-```
-
-server.js
-```js
-
-var axon = require('axon')
-  , sock = axon.socket('rep');
-
-sock.bind(3000);
-
-sock.on('message', function(msg, reply){
-  console.log('got: %s', msg.toString());
-  reply('pong');
-});
-```
-
 ## Socket Options
 
 Every socket has associated options that can be configured via `get/set`.
@@ -271,8 +233,8 @@ Every socket has associated options that can be configured via `get/set`.
 
 PubSockets additionally have options for batching:
 
-  - `batch max` - Max amount of messages to buffer in memory.
-  - `batch ttl` - Amount of time to buffer messages before sending.
+  - `batch max` - Max amount of messages to buffer in memory [10].
+  - `batch ttl` - Amount of time in milliesconds to buffer messages before sending [100].
 
 ## Binding / Connecting
 
