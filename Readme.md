@@ -329,7 +329,7 @@ feature all together and simply pass encoded data to `.send()`.
 
 ## Performance
 
-I haven't profiled or tuned anything yet but so far for on my macbook pro.
+Preliminary benchmarks on my Macbook Pro:
 
 15 byte messages:
 
