@@ -338,7 +338,7 @@ Preliminary benchmarks on my Macbook Pro:
      mean: 472,109 ops/s
    median: 477,309 ops/s
     total: 10,758,780 ops in 24.633s
-  through: 6.753573417663574 mb/s
+  through: 6.75 mb/s
 
 ```
 
@@ -350,7 +350,7 @@ Preliminary benchmarks on my Macbook Pro:
      mean: 462,286 ops/s
    median: 461,512 ops/s
     total: 6,455,160 ops in 15.488s
-  through: 28.2156982421875 mb/s
+  through: 28.21 mb/s
 
 ```
 
@@ -362,7 +362,7 @@ Preliminary benchmarks on my Macbook Pro:
      mean: 382,829 ops/s
    median: 382,764 ops/s
     total: 3,333,581 ops in 15.126s
-  through: 373.8564453125 mb/s
+  through: 373.85 mb/s
 
 ```
 
@@ -374,7 +374,7 @@ Preliminary benchmarks on my Macbook Pro:
      mean: 92,778 ops/s
    median: 87,943 ops/s
     total: 1,257,430 ops in 21.735s
-  through: 724.828125 mb/s
+  through: 724.82 mb/s
 
 ````
 
