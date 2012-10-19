@@ -13,6 +13,7 @@
   - light-weight wire protocol
   - supports arbitrary binary message (msgpack, json, BLOBS, etc)
   - supports JSON messages out of the box
+  - fast (~800 mb/s ~500,000 messages/s)
 
 ## Events
 
