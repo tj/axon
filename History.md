@@ -1,4 +1,10 @@
 
+0.4.3 / 2012-10-27 
+==================
+
+  * add 30% throughput increase for sub-emitter by removing some indirection
+  * fix `PubSocket#flushBatch()` in order to avoid writing to not writable sockets [AlexeyKupershtokh]
+
 0.4.2 / 2012-10-18 
 ==================
 
