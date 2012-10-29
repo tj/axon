@@ -1,4 +1,9 @@
 
+0.4.4 / 2012-10-29 
+==================
+
+  * fix round-robin global var leak for fallback function. Closes #66
+
 0.4.3 / 2012-10-27 
 ==================
 
