@@ -228,8 +228,9 @@ sock.on('*', function(event){
 
 Every socket has associated options that can be configured via `get/set`.
 
-  - `identity` - The "name" of the socket that uniqued identifies it.
-  - `retry timeout` - The amount of time until retries will not be attempted again.
+  - `identity` - the "name" of the socket that uniqued identifies it.
+  - `retry timeout` - connection retry timeout in milliseconds [100]
+  - `retry max timeout` - the cap for retry timeout length in milliseconds [5000]
 
 PubSockets additionally have options for batching:
 

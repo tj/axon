@@ -1,4 +1,12 @@
 
+0.4.5 / 2012-10-30 
+==================
+
+  * add more network errors to be ignored
+  * refactor `SubEmitter`
+  * refactor `PubEmitter`
+  * fix exponential backoff
+
 0.4.4 / 2012-10-29 
 ==================
 
