@@ -1,11 +1,12 @@
 
 var axon = require('../..')
-  , sock = axon.socket('req');
+  , req = axon.socket('req');
 
-sock.connect(3000);
+req.format('json');
+req.connect(3000);
 
-sock.on('message', function(msg){
-  console.log('got: %s', msg.toString());
-});
-
-sock.send('ping');
+setInterval(function(){
+  req.send({ hello: 'world' }, function(msg){
+    console.log('replied: %j', msg);
+  });
+}, 150);
