@@ -57,10 +57,10 @@ process.on('SIGINT', function(){
   var ms = Date.now() - start;
   var avg = mean(results);
   console.log('\n');
-  console.log('      min: %d ops/s', min(results));
-  console.log('     mean: %d ops/s', avg);
-  console.log('   median: %d ops/s', median(results));
-  console.log('    total: %d ops in %ds', n, ms / 1000);
+  console.log('      min: %s ops/s', humanize(min(results)));
+  console.log('     mean: %s ops/s', humanize(avg));
+  console.log('   median: %s ops/s', humanize(median(results)));
+  console.log('    total: %s ops in %ds', humanize(n), ms / 1000);
   console.log('  through: %d mb/s', ((avg * bytes) / 1024 / 1024).toFixed(2));
   console.log();
   process.exit();
