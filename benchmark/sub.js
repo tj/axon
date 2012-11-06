@@ -13,19 +13,18 @@ sock.connect(3000);
 var n = 0;
 var ops = 200;
 var bytes = program.size || 1024;
-var t = start = process.hrtime();
+var t = start = Date.now(), d;
 var results = [];
 
 console.log();
 
 sock.on('message', function(msg){
   if (n++ % ops == 0) {
-    t = process.hrtime(t);
-    var ms = t[1] / 1000 / 1000;
+    ms = Date.now() - t;
     var persec = (ops * (1000 / ms) | 0);
     results.push(persec);
     process.stdout.write('\r  [' + persec + ' ops/s] [' + n + ']');
-    t = process.hrtime();
+    t = Date.now();
   }
 });
 
@@ -53,14 +52,14 @@ function median(arr) {
 }
 
 process.on('SIGINT', function(){
-  t = process.hrtime(start);
-  var avg = mean(results);
+  ms = Date.now() - start;
+  var avg = n / (ms / 1000);
   console.log('\n');
   console.log('      min: %d ops/s', min(results));
-  console.log('     mean: %d ops/s', avg);
+  console.log('     mean: %d ops/s', Math.round(avg*1000)/1000);
   console.log('   median: %d ops/s', median(results));
-  console.log('    total: %d ops in %d.%ds', n, t[0], t[1] / 1000 / 1000 | 0);
-  console.log('  through: %d mb/s', (avg * bytes) / 1024 / 1024);
+  console.log('    total: %d ops in %ds', n, ms / 1000);
+  console.log('  through: %d mb/s', Math.round((avg * bytes) / 1024 / 1024 * 1000) / 1000);
   console.log();
   process.exit();
 });
