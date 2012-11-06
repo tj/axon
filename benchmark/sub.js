@@ -21,13 +21,21 @@ console.log();
 sock.on('message', function(msg){
   if (n++ % ops == 0) {
     t = process.hrtime(t);
-    var ms = t[1] / 1000 / 1000;
-    var persec = (ops * (1000 / ms) | 0);
+    var persec = (ops / hrToSec(t)) | 0;
     results.push(persec);
     process.stdout.write('\r  [' + persec + ' ops/s] [' + n + ']');
     t = process.hrtime();
   }
 });
+
+function hrToSec(t) {
+  return t[0] + t[1] / 1e9;
+}
+
+function numberFormat(n, m) {
+  var e = Math.pow(10, m);
+  return Math.round(n * e) / e;
+}
 
 function sum(arr) {
   return arr.reduce(function(sum, n){
@@ -54,13 +62,14 @@ function median(arr) {
 
 process.on('SIGINT', function(){
   t = process.hrtime(start);
-  var avg = mean(results);
+  var sec = hrToSec(t);
+  var avg = n / sec;
   console.log('\n');
   console.log('      min: %d ops/s', min(results));
-  console.log('     mean: %d ops/s', avg);
+  console.log('     mean: %d ops/s', numberFormat(avg, 3));
   console.log('   median: %d ops/s', median(results));
-  console.log('    total: %d ops in %d.%ds', n, t[0], t[1] / 1000 / 1000 | 0);
-  console.log('  through: %d mb/s', (avg * bytes) / 1024 / 1024);
+  console.log('    total: %d ops in %ds', n, numberFormat(sec, 3));
+  console.log('  through: %d mb/s', numberFormat(avg * bytes / 1024 / 1024, 3));
   console.log();
   process.exit();
 });
