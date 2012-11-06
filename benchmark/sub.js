@@ -1,6 +1,7 @@
 
 var ss = require('..')
-  , program = require('commander');
+  , program = require('commander')
+  , humanize = require('humanize-number');
 
 program
   .option('-T, --type <name>', 'socket type [sub]', 'sub')
@@ -60,7 +61,7 @@ process.on('SIGINT', function(){
   console.log('     mean: %d ops/s', avg);
   console.log('   median: %d ops/s', median(results));
   console.log('    total: %d ops in %ds', n, ms / 1000);
-  console.log('  through: %d mb/s', (avg * bytes) / 1024 / 1024);
+  console.log('  through: %d mb/s', ((avg * bytes) / 1024 / 1024).toFixed(2));
   console.log();
   process.exit();
 });

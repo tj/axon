@@ -12,7 +12,16 @@
     "better-assert": "*",
     "should": "*",
     "mocha": "*",
-    "commander": "*"
+    "commander": "*",
+    "humanize-number": "0.0.1"
   },
-  "keywords": ["zmq", "zeromq", "pubsub", "socket", "emitter", "ipc", "rpc"]
+  "keywords": [
+    "zmq",
+    "zeromq",
+    "pubsub",
+    "socket",
+    "emitter",
+    "ipc",
+    "rpc"
+  ]
 }
