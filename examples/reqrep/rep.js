@@ -1,10 +1,11 @@
 
 var axon = require('../..')
-  , sock = axon.socket('rep');
+  , rep = axon.socket('rep');
 
-sock.bind(3000);
+rep.format('json');
+rep.bind(3000);
 
-sock.on('message', function(msg, reply){
-  console.log('got: %s', msg.toString());
-  reply('pong');
+rep.on('message', function(msg, reply){
+  console.log('requested: %j', msg);
+  reply({ goodbye: 'world' });
 });
