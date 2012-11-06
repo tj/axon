@@ -55,10 +55,10 @@ function median(arr) {
 
 process.on('SIGINT', function(){
   var ms = Date.now() - start;
-  var avg = mean(results);
+  var avg = n / (ms / 1000);
   console.log('\n');
   console.log('      min: %s ops/s', humanize(min(results)));
-  console.log('     mean: %s ops/s', humanize(avg));
+  console.log('     mean: %s ops/s', humanize(avg | 0));
   console.log('   median: %s ops/s', humanize(median(results)));
   console.log('    total: %s ops in %ds', humanize(n), ms / 1000);
   console.log('  through: %d mb/s', ((avg * bytes) / 1024 / 1024).toFixed(2));
