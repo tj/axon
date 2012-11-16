@@ -5,8 +5,8 @@ var axon = require('..')
 var req = axon.socket('req')
   , rep = axon.socket('rep');
 
-req.bind(3000);
-rep.connect(3000);
+req.bind(4444);
+rep.connect(4444);
 
 var pending = 10
   , n = pending

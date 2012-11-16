@@ -9,7 +9,7 @@ var push = ss.socket('push')
 
 var n = 0;
 
-push.bind(3000);
+push.bind(4444);
 
 push.format('json');
 push.send({ path: '/tmp/foo.png' });
@@ -18,7 +18,7 @@ push.send({ path: '/tmp/baz.png' });
 
 var strs = ['foo', 'bar', 'baz'];
 
-pull.connect(3000);
+pull.connect(4444);
 pull.on('message', function(msg){
   msg.should.have.property('path', '/tmp/' + strs[n++] + '.png');
   if (n == 3) {

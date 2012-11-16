@@ -12,17 +12,17 @@ var worker = ss.socket('pub-emitter')
 /*
 
                     <--- a
-  worker ---> relay <--- b 
+  worker ---> relay <--- b
                     <--- c
 
 */
 
-relaySub.bind(3000);
-relayPub.bind(4000);
-worker.connect(3000);
-a.connect(4000);
-b.connect(4000);
-c.connect(4000);
+relaySub.bind(4444);
+relayPub.bind(5555);
+worker.connect(4444);
+a.connect(5555);
+b.connect(5555);
+c.connect(5555);
 
 relaySub.on('progress', function(id, n){
   relayPub.emit('progress', id, n);

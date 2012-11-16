@@ -7,8 +7,8 @@ var axon = require('..')
 req.format('json');
 rep.format('json');
 
-req.bind(3000);
-rep.connect(3000);
+req.bind(4444);
+rep.connect(4444);
 
 rep.on('message', function(obj, reply){
   reply({ name: obj.name });

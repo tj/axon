@@ -5,8 +5,8 @@ var axon = require('..')
 var push = axon.socket('push')
   , pull = axon.socket('pull');
 
-pull.bind(3000);
-push.connect(3000);
+pull.bind(4444);
+push.connect(4444);
 
 push.on('error', function(err){
   assert('boom' == err.message);

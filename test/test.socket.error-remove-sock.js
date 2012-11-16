@@ -7,13 +7,13 @@ var a = axon.socket('push')
   , c = axon.socket('push')
   , pull = axon.socket('pull');
 
-a.bind(3001);
-b.bind(3002);
-c.bind(3003);
+a.bind(4441);
+b.bind(4442);
+c.bind(4443);
 
-pull.connect(3001);
-pull.connect(3002);
-pull.connect(3003);
+pull.connect(4441);
+pull.connect(4442);
+pull.connect(4443);
 
 pull.once('error', function(err){
   assert('boom' == err.message);

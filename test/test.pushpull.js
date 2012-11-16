@@ -10,11 +10,11 @@ var push = ss.socket('push')
 var n = 0
   , closed;
 
-push.bind(3000);
+push.bind(4444);
 push.send('foo');
 push.send('bar');
 
-pull.connect(3000);
+pull.connect(4444);
 pull.on('message', function(msg){
   msg.should.be.an.instanceof(Buffer);
   msg.should.have.length(3);

@@ -7,8 +7,8 @@ var pub = ss.socket('pub-emitter')
 
 // test basic 1-1 pub/sub emitter style
 
-pub.bind(3000, function(){
-  sub.connect(3000, function(){
+pub.bind(4444, function(){
+  sub.connect(4444, function(){
     sub.on('foo', function(){
       arguments.length.should.equal(0);
     });

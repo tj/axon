@@ -10,17 +10,17 @@ var worker = ss.socket('pub-emitter')
 /*
 
             +--> a
-  worker ---|--> b 
+  worker ---|--> b
             +--> c
 
 */
 
-worker.connect(3000);
-worker.connect(3001);
-worker.connect(3002);
-a.bind(3000);
-b.bind(3001);
-c.bind(3002);
+worker.connect(4444);
+worker.connect(4445);
+worker.connect(4446);
+a.bind(4444);
+b.bind(4445);
+c.bind(4446);
 
 var vals = [];
 var pending = 3;

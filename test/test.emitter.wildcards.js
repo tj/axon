@@ -5,7 +5,7 @@ var axon = require('..')
   , sub = axon.socket('sub-emitter')
   , pending = 8
 
-pub.bind(3000);
+pub.bind(4444);
 
 sub.on('user:login', function(name){
   assert('tobi' == name);
@@ -41,7 +41,7 @@ sub.on('foo.bar.baz', function(){
   --pending || done();
 });
 
-sub.connect(3000, function(){
+sub.connect(4444, function(){
   pub.emit('user:login', 'tobi');
   pub.emit('user:logout', 'tobi');
   pub.emit('weird[chars]{some stuff}', 'hello');

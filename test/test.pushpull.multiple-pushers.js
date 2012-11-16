@@ -8,9 +8,9 @@ var pusher1 = ss.socket('push');
 var pusher2 = ss.socket('push');
 var pusher3 = ss.socket('push');
 
-pusher1.bind(3000);
-pusher2.bind(3001);
-pusher3.bind(3002);
+pusher1.bind(4444);
+pusher2.bind(4445);
+pusher3.bind(4446);
 
 pusher1.send('hey');
 pusher2.send('hey');
@@ -20,9 +20,9 @@ pusher3.send('hey');
 
 var pull = ss.socket('pull');
 
-pull.connect(3000);
-pull.connect(3001);
-pull.connect(3002);
+pull.connect(4444);
+pull.connect(4445);
+pull.connect(4446);
 
 var msgs = [];
 

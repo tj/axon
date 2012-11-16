@@ -5,8 +5,8 @@ var axon = require('..')
 var push = axon.socket('push')
   , pull = axon.socket('pull');
 
-push.bind(3000);
-pull.connect(3000);
+push.bind(4444);
+pull.connect(4444);
 
 push.on('ignored error', function(err){
   assert('ECONNREFUSED' == err.code);

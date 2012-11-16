@@ -44,10 +44,6 @@ function min(arr) {
   });
 }
 
-function mean(arr) {
-  return sum(arr) / arr.length | 0;
-}
-
 function median(arr) {
   arr = arr.sort();
   return arr[arr.length / 2 | 0];
