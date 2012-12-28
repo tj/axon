@@ -5,16 +5,15 @@ var axon = require('..')
 var pull = axon.socket('pull');
 
 var closed = false;
-var callbackClose = function() {
-  closed = true;
-}
 
-pull.bind(4444, function() {
-  pull.close(callbackClose);
+pull.bind(4444, function(){
+  pull.close(function(){
+    closed = true;
+  });
 });
 
-pull.on('close', function() {
-  setTimeout(function() {
-    assert(closed === true);
+pull.on('close', function(){
+  setTimeout(function(){
+    assert(closed);
   }, 100);
 });
