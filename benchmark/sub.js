@@ -6,6 +6,7 @@ var ss = require('..')
 program
   .option('-T, --type <name>', 'socket type [sub]', 'sub')
   .option('-s, --size <n>', 'message size in bytes [1024]', parseInt)
+  .option('-d, --duration <n>', 'duration of test [5000]', parseInt)
   .parse(process.argv)
 
 var sock = ss.socket(program.type);
@@ -49,7 +50,7 @@ function median(arr) {
   return arr[arr.length / 2 | 0];
 }
 
-process.on('SIGINT', function(){
+function done(){
   var ms = Date.now() - start;
   var avg = n / (ms / 1000);
   console.log('\n');
@@ -60,4 +61,7 @@ process.on('SIGINT', function(){
   console.log('  through: %d mb/s', ((avg * bytes) / 1024 / 1024).toFixed(2));
   console.log();
   process.exit();
-});
+}
+
+process.on('SIGINT', done);
+setTimeout(done, program.duration);
