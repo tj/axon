@@ -29,6 +29,7 @@ push.on('flush', function(msgs){
 
 pull.on('message', function(msg){
   console.log('recv %s', msg);
+  if ('10' == msg.toString()) process.exit();
 });
 
 pull.bind(3000, function(){
