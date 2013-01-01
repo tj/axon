@@ -6,8 +6,8 @@ var axon = require('..')
 
 pub.bind(4444);
 
-sub.subscribe(/^user:*/);
-sub.subscribe(/^page:view/);
+sub.subscribe(/^user:.+$/);
+sub.subscribe(/^page:view$/);
 
 sub.connect(4444, function(){
   pub.send('user:login', 'tobi');
