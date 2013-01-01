@@ -1,10 +1,18 @@
 
-0.4.6 / 2012-11-15 
+0.5.0 / 2013-01-01
+==================
+
+  * add HWM support. Closes #19
+  * add ability to pass a callback in to the Socket.close method.
+  * update benchmarks. Closes #72
+  * remove batching
+
+0.4.6 / 2012-11-15
 ==================
 
   * fix round-robin write to unwritable socket
 
-0.4.5 / 2012-10-30 
+0.4.5 / 2012-10-30
 ==================
 
   * add more network errors to be ignored
@@ -12,25 +20,25 @@
   * refactor `PubEmitter`
   * fix exponential backoff
 
-0.4.4 / 2012-10-29 
+0.4.4 / 2012-10-29
 ==================
 
   * fix round-robin global var leak for fallback function. Closes #66
 
-0.4.3 / 2012-10-27 
+0.4.3 / 2012-10-27
 ==================
 
   * add 30% throughput increase for sub-emitter by removing some indirection
   * fix `PubSocket#flushBatch()` in order to avoid writing to not writable sockets [AlexeyKupershtokh]
 
-0.4.2 / 2012-10-18 
+0.4.2 / 2012-10-18
 ==================
 
   * add 30% throughput increase for sub-emitter by removing some indirection
   * add escaping of regexp chars for `SubSocket#subscribe()`
   * fix non-multipart `SubEmitterSocket` logic
 
-0.4.1 / 2012-10-16 
+0.4.1 / 2012-10-16
 ==================
 
   * add removal of sockets on error
@@ -40,7 +48,7 @@
   * fix 'close' event for server sockets
   * remove "stream" socket type for now
 
-0.4.0 / 2012-10-12 
+0.4.0 / 2012-10-12
 ==================
 
   * add emitter wildcard support
@@ -50,24 +58,24 @@
   * perf: remove `.concat()` usage, ~10% gain
   * remove greetings
 
-0.3.2 / 2012-10-08 
+0.3.2 / 2012-10-08
 ==================
 
   * change prefix fix to `reply()` only
 
-0.3.1 / 2012-10-08 
+0.3.1 / 2012-10-08
 ==================
 
   * add fix for reply(undefined)
 
-0.3.0 / 2012-10-05 
+0.3.0 / 2012-10-05
 ==================
 
   * add `Socket#address()` to help with ephemeral port binding. Closes #39
   * add default identity of __PID__. Closes #35
   * remove examples for router/dealer
 
-0.2.0 / 2012-09-27 
+0.2.0 / 2012-09-27
 ==================
 
   * add default random `identity`
@@ -75,7 +83,7 @@
   * remove router / dealer
   * change `ReqSocket` to round-robin send()s
 
-0.1.0 / 2012-09-24 
+0.1.0 / 2012-09-24
 ==================
 
   * add router socket [gjohnson]
@@ -89,7 +97,7 @@
   * add Batch#empty()
   * remove Socket#option()
 
-0.0.3 / 2012-07-14 
+0.0.3 / 2012-07-14
 ==================
 
   * add resize example
