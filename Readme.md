@@ -134,7 +134,7 @@ var axon = require('axon')
 sock.bind(3000);
 
 sock.send(img, function(res){
-  
+
 });
 ```
 
@@ -164,7 +164,7 @@ var axon = require('axon')
 sock.bind(3000);
 
 sock.send('resize', img, function(res){
-  
+
 });
 ```
 
@@ -295,26 +295,15 @@ feature all together and simply pass encoded data to `.send()`.
 
 Preliminary benchmarks on my Macbook Pro:
 
-15 byte messages:
-
-```
-      min: 280 ops/s
-     mean: 472,109 ops/s
-   median: 477,309 ops/s
-    total: 10,758,780 ops in 24.633s
-  through: 6.75 mb/s
+  64 byte messages:
 
 ```
 
-64 byte messages:
-
-```
-
-      min: 218 ops/s
-     mean: 462,286 ops/s
-   median: 461,512 ops/s
-    total: 6,455,160 ops in 15.488s
-  through: 28.21 mb/s
+      min: 47,169 ops/s
+     mean: 465,127 ops/s
+   median: 500,000 ops/s
+    total: 2,325,636 ops in 5s
+  through: 28.39 mb/s
 
 ```
 
@@ -322,11 +311,11 @@ Preliminary benchmarks on my Macbook Pro:
 
 ```
 
-      min: 280 ops/s
-     mean: 382,829 ops/s
-   median: 382,764 ops/s
-    total: 3,333,581 ops in 15.126s
-  through: 373.85 mb/s
+      min: 42,735 ops/s
+     mean: 76,649 ops/s
+   median: 48,076 ops/s
+    total: 383,403 ops in 5.002s
+  through: 74.85 mb/s
 
 ```
 
@@ -334,11 +323,11 @@ Preliminary benchmarks on my Macbook Pro:
 
 ```
 
-      min: 392 ops/s
-     mean: 92,778 ops/s
-   median: 87,943 ops/s
-    total: 1,257,430 ops in 21.735s
-  through: 724.82 mb/s
+      min: 3,516 ops/s
+     mean: 3,811 ops/s
+   median: 43,478 ops/s
+    total: 19,059 ops in 5.001s
+  through: 29.16 mb/s
 
 ````
 
