@@ -25,6 +25,8 @@
   - `connect` when connected to the peer, or a peer connection is accepted
   - `disconnect` when an accepted peer disconnects
   - `bind` when the server is bound
+  - `drop` (msg) when a message is dropped due to the HWM
+  - `flush` (msgs) queued when messages are flushed on connection
 
 ## Patterns
 
@@ -231,6 +233,7 @@ Every socket has associated options that can be configured via `get/set`.
   - `identity` - the "name" of the socket that uniqued identifies it.
   - `retry timeout` - connection retry timeout in milliseconds [100]
   - `retry max timeout` - the cap for retry timeout length in milliseconds [5000]
+  - `hwm` - the high water mark threshold for queues [Infinity]
 
 ## Binding / Connecting
 
@@ -367,26 +370,5 @@ $ make test
 
 ## License
 
-(The MIT License)
-
-Copyright (c) 2012 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-'Software'), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  MIT
 
