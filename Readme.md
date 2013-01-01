@@ -232,11 +232,6 @@ Every socket has associated options that can be configured via `get/set`.
   - `retry timeout` - connection retry timeout in milliseconds [100]
   - `retry max timeout` - the cap for retry timeout length in milliseconds [5000]
 
-PubSockets additionally have options for batching:
-
-  - `batch max` - Max amount of messages to buffer in memory [10].
-  - `batch ttl` - Amount of time in milliesconds to buffer messages before sending [100].
-
 ## Binding / Connecting
 
 In addition to passing a portno, binding to INADDR_ANY by default, you
@@ -293,7 +288,10 @@ feature all together and simply pass encoded data to `.send()`.
 
 ## Performance
 
-Preliminary benchmarks on my Macbook Pro:
+Preliminary benchmarks on my Macbook Pro based on 10 messages
+per tick as a realistic production application would likely have
+even less than this. "better" numbers may be acheived with batching
+and a larger messages/tick count however this is not realistic.
 
   64 byte messages:
 
@@ -311,11 +309,11 @@ Preliminary benchmarks on my Macbook Pro:
 
 ```
 
-      min: 42,735 ops/s
-     mean: 76,649 ops/s
-   median: 48,076 ops/s
-    total: 383,403 ops in 5.002s
-  through: 74.85 mb/s
+      min: 48,076 ops/s
+     mean: 120,253 ops/s
+   median: 121,951 ops/s
+    total: 601,386 ops in 5.001s
+  through: 117.43 mb/s
 
 ```
 
@@ -323,13 +321,25 @@ Preliminary benchmarks on my Macbook Pro:
 
 ```
 
-      min: 3,516 ops/s
-     mean: 3,811 ops/s
-   median: 43,478 ops/s
-    total: 19,059 ops in 5.001s
-  through: 29.16 mb/s
+      min: 36,496 ops/s
+     mean: 53,194 ops/s
+   median: 50,505 ops/s
+    total: 266,506 ops in 5.01s
+  through: 405.84 mb/s
 
 ````
+
+  32k messages:
+
+```
+
+      min: 12,077 ops/s
+     mean: 14,792 ops/s
+   median: 16,233 ops/s
+    total: 74,186 ops in 5.015s
+  through: 462.28 mb/s
+
+```
 
 ## What's it good for?
 

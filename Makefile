@@ -1,6 +1,6 @@
 
 TESTS = $(wildcard test/test.*.js)
-PER_TICK=1000
+PER_TICK=10
 SIZE=1024
 DURATION=5000
 
@@ -10,5 +10,5 @@ bm:
 
 test:
 	@./test/run $(TESTS)
-	
+
 .PHONY: test bm

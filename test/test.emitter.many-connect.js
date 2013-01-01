@@ -15,40 +15,45 @@ var worker = ss.socket('pub-emitter')
 
 */
 
-worker.connect(4444);
-worker.connect(4445);
-worker.connect(4446);
 a.bind(4444);
 b.bind(4445);
 c.bind(4446);
 
+worker.connect(4444, function(){
+  worker.connect(4445, function(){
+    worker.connect(4446, test);
+  });
+});
+
 var vals = [];
 var pending = 3;
 
-a.on('progress', function(id, n){
-  vals.push('a');
-  id.should.equal('3d2fg');
-  n.should.equal(.5);
-  --pending || done();
-});
+function test() {
+  a.on('progress', function(id, n){
+    vals.push('a');
+    id.should.equal('3d2fg');
+    n.should.equal(.5);
+    --pending || done();
+  });
 
-b.on('progress', function(id, n){
-  vals.push('b');
-  id.should.equal('3d2fg');
-  n.should.equal(.5);
-  --pending || done();
-});
+  b.on('progress', function(id, n){
+    vals.push('b');
+    id.should.equal('3d2fg');
+    n.should.equal(.5);
+    --pending || done();
+  });
 
-c.on('progress', function(id, n){
-  vals.push('c');
-  id.should.equal('3d2fg');
-  n.should.equal(.5);
-  --pending || done();
-});
+  c.on('progress', function(id, n){
+    vals.push('c');
+    id.should.equal('3d2fg');
+    n.should.equal(.5);
+    --pending || done();
+  });
 
-setTimeout(function(){
-  worker.emit('progress', '3d2fg', .5);
-}, 100);
+  setTimeout(function(){
+    worker.emit('progress', '3d2fg', .5);
+  }, 100);
+}
 
 function done() {
   vals.should.include('a');
