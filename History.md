@@ -1,4 +1,11 @@
 
+0.5.1 / 2013-03-01
+==================
+
+  * add exit() to HWM example
+  * add better HWM example
+  * fix: ignore closed sockets on reply(). fixes #82
+
 0.5.0 / 2013-01-01
 ==================
 
