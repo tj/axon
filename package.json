@@ -6,7 +6,8 @@
   "dependencies": {
     "debug": "*",
     "configurable": "0.0.1",
-    "escape-regexp": "0.0.1"
+    "escape-regexp": "0.0.1",
+    "uid2": "0.0.2"
   },
   "devDependencies": {
     "better-assert": "*",
