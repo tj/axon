@@ -283,11 +283,46 @@ axon.codec.define('json', {
   encode: JSON.stringify,
   decode: JSON.parse
 });
-```
 
 __Note:__ codecs must be defined on both the sending and receiving ends, otherwise
 axon cannot properly decode the messages. You may of course ignore this
 feature all together and simply pass encoded data to `.send()`.
+
+To use a codec in a socket pair, use the `format(<codec name>)` command. For example, to send json over a req/rep socket pair
+
+```
+var axon = require('axon'),
+    requestSocket = axon.socket('req'),
+    replySocket = axon.socket('rep');
+
+requestSocket.format('json')
+requestSocket.bind(3000);
+
+replySocket.format('json')
+replySocket.connect(3000)
+
+replySocket.on('message', function (data, cb) {
+  // data is a json object
+  console.log('reply socket received json data')
+  console.dir(data)
+  var output = {
+    fizz: 'buzz'
+  }
+  cb(null, output)
+})
+var data = {
+  foo: 'bar'
+}
+
+requestSocket.send(data, function(err, res){
+  if (err) {
+    console.dir(err)
+    return
+  }
+  console.log('request socket callback received data')
+  console.dir(res)
+})
+```
 
 ## Performance
 
@@ -372,4 +407,3 @@ $ make test
 ## License
 
   MIT
-
