@@ -283,6 +283,7 @@ axon.codec.define('json', {
   encode: JSON.stringify,
   decode: JSON.parse
 });
+```
 
 __Note:__ codecs must be defined on both the sending and receiving ends, otherwise
 axon cannot properly decode the messages. You may of course ignore this
