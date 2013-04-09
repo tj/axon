@@ -1,4 +1,10 @@
 
+0.5.2 / 2013-04-09 
+==================
+
+  * add `sock.queue` array for logging / debugging etc
+  * fix connection queue flush which may drop messages on connection
+
 0.5.1 / 2013-03-01
 ==================
 
