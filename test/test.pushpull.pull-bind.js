@@ -10,8 +10,8 @@ var push = ss.socket('push')
 var n = 0
   , closed;
 
-pull.bind(4444);
-push.connect(4444);
+pull.bind(4000);
+push.connect(4000);
 push.send('foo');
 push.send('bar');
 

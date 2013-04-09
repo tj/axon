@@ -9,10 +9,10 @@
 // 
 // // test basic 1-1 pub/sub with missed messages
 // 
-// pub.bind(3000, function(){
+// pub.bind(3333, function(){
 //   pub.send('foo');
 //   pub.send('bar');
-//   sub.connect(3000, function(){
+//   sub.connect(3333, function(){
 //     sub.on('message', function(msg){
 //       msg.should.be.an.instanceof(Buffer);
 //       msg.should.have.length(3);

@@ -6,7 +6,7 @@ var pull = axon.socket('pull');
 
 var closed = false;
 
-pull.bind(4444, function(){
+pull.bind(4000, function(){
   pull.close(function(){
     closed = true;
   });

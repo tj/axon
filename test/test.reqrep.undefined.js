@@ -8,8 +8,8 @@ var axon = require('..')
 req.format('json');
 rep.format('json');
 
-req.bind(4444);
-rep.connect(4444);
+req.bind(4000);
+rep.connect(4000);
 
 rep.on('message', function(obj, reply){
   reply(undefined);

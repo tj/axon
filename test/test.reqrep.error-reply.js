@@ -5,8 +5,8 @@ var axon = require('..')
 var req = axon.socket('req')
   , rep = axon.socket('rep');
 
-rep.bind(4444);
-req.connect(4444);
+rep.bind(4000);
+req.connect(4000);
 
 rep.on('message', function(msg, reply){
   setTimeout(function(){

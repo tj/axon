@@ -11,8 +11,8 @@ var push = ss.socket('push')
 var msgs = []
   , n = 0;
 
-push.bind(4444);
-pull.connect(4444);
+push.bind(4000);
+pull.connect(4000);
 
 var id = setInterval(function(){
   push.send(String(n++));
@@ -26,7 +26,7 @@ pull.on('message', function(msg){
       push.close();
       push.once('close', function(){
         setTimeout(function(){
-          push.bind(4444);
+          push.bind(4000);
         }, 50);
       });
       break;

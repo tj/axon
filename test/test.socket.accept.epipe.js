@@ -5,8 +5,8 @@ var axon = require('..')
 var push = axon.socket('push')
   , pull = axon.socket('pull');
 
-push.bind(4444);
-pull.connect(4444);
+push.bind(4000);
+pull.connect(4000);
 
 push.on('ignored error', function(err){
   assert('EPIPE' == err.code);

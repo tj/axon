@@ -15,11 +15,11 @@ var worker = ss.socket('pub-emitter')
 
 */
 
-a.bind(4444);
+a.bind(4000);
 b.bind(4445);
 c.bind(4446);
 
-worker.connect(4444, function(){
+worker.connect(4000, function(){
   worker.connect(4445, function(){
     worker.connect(4446, test);
   });

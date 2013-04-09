@@ -17,9 +17,9 @@ var worker = ss.socket('pub-emitter')
 
 */
 
-relaySub.bind(4444);
+relaySub.bind(4000);
 relayPub.bind(5555);
-worker.connect(4444);
+worker.connect(4000);
 a.connect(5555);
 b.connect(5555);
 c.connect(5555);

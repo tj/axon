@@ -7,8 +7,8 @@ var req = axon.socket('req')
   , req2 = axon.socket('req')
   , rep2 = axon.socket('rep');
 
-req.bind(4444);
-rep.connect(4444);
+req.bind(4000);
+rep.connect(4000);
 
 req2.bind(4445);
 rep2.connect(4445);

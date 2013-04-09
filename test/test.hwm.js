@@ -6,7 +6,7 @@ var push = axon.socket('push')
   , pull = axon.socket('pull');
 
 push.set('hwm', 5);
-push.connect(3000);
+push.connect(3333);
 
 push.send('1');
 push.send('2');
@@ -22,7 +22,7 @@ push.once('drop', function(msg){
   push.once('drop', function(msg){
     msg.toString().should.equal('7');
 
-    pull.bind(3000);
+    pull.bind(3333);
     push.once('flush', function(buf){
       buf.should.eql(['1', '2', '3', '4', '5']);
       push.send('8');

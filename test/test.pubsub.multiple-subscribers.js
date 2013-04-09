@@ -17,10 +17,10 @@ var messages = {
 
 // test basic 1-M pub/sub
 
-pub.bind(4444, function(){
-  a.connect(4444, function(){
-    b.connect(4444, function(){
-      c.connect(4444, function(){
+pub.bind(4000, function(){
+  a.connect(4000, function(){
+    b.connect(4000, function(){
+      c.connect(4000, function(){
         setTimeout(function(){
           pub.send('foo');
           pub.send('bar');

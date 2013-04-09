@@ -4,12 +4,12 @@ var axon = require('..')
   , pub = axon.socket('pub')
   , sub = axon.socket('sub')
 
-pub.bind(4444);
+pub.bind(4000);
 
 sub.subscribe(/^user:.+$/);
 sub.subscribe(/^page:view$/);
 
-sub.connect(4444, function(){
+sub.connect(4000, function(){
   pub.send('user:login', 'tobi');
   pub.send('user:login', 'loki');
   pub.send('user:logout', 'jane');

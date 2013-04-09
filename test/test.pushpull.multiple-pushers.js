@@ -8,7 +8,7 @@ var pusher1 = ss.socket('push');
 var pusher2 = ss.socket('push');
 var pusher3 = ss.socket('push');
 
-pusher1.bind(4444);
+pusher1.bind(4000);
 pusher2.bind(4445);
 pusher3.bind(4446);
 
@@ -20,7 +20,7 @@ pusher3.send('hey');
 
 var pull = ss.socket('pull');
 
-pull.connect(4444);
+pull.connect(4000);
 pull.connect(4445);
 pull.connect(4446);
 

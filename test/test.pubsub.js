@@ -10,8 +10,8 @@ var n = 0
 
 // test basic 1-1 pub/sub
 
-pub.bind(4444, function(){
-  sub.connect(4444, function(){
+pub.bind(4000, function(){
+  sub.connect(4000, function(){
     sub.on('message', function(msg){
       msg.should.be.an.instanceof(Buffer);
       msg.should.have.length(3);
