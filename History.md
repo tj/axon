@@ -1,4 +1,10 @@
 
+0.6.1 / 2013-04-13 
+==================
+
+  * fix Socket#close() callback support
+  * add callback to reply() when peer is gone
+
 0.6.0 / 2013-04-13 
 ==================
 
