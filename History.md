@@ -1,4 +1,10 @@
 
+0.6.0 / 2013-04-13 
+==================
+
+  * add optional reply() callback. Closes #95
+  * add support for optional req.send() callback. Closes #89
+
 0.5.2 / 2013-04-09 
 ==================
 
