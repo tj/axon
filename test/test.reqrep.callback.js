@@ -9,9 +9,10 @@ req.bind(4000);
 rep.connect(4000);
 
 rep.on('message', function(msg, reply){
-  reply('got "' + msg + '"');
-  req.close();
-  rep.close();
+  reply('got "' + msg + '"', function(){
+    req.close();
+    rep.close();
+  });
 });
 
 req.send('hello');
