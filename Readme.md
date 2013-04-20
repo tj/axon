@@ -2,6 +2,8 @@
 
   Axon is a message-oriented socket library for node.js heavily inspired by zeromq.
 
+[![Build Status](https://travis-ci.org/visionmedia/axon.png)](https://travis-ci.org/visionmedia/axon)
+
 ## Installation
 
     $ npm install axon
