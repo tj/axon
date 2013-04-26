@@ -1,9 +1,9 @@
 
 // $ npm install resize
 
-var ss = require('../..')
-  , sock = ss.socket('pull')
-  , sink = ss.socket('push')
+var axon = require('../..')
+  , sock = axon.socket('pull')
+  , sink = axon.socket('push')
   , resize = require('resize')
   , fs = require('fs');
 

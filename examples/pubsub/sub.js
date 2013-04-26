@@ -1,6 +1,6 @@
 
-var ss = require('../..')
-  , sock = ss.socket('sub');
+var axon = require('../..')
+  , sock = axon.socket('sub');
 
 sock.connect(3000);
 
