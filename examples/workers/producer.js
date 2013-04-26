@@ -1,6 +1,6 @@
 
-var ss = require('../..')
-  , sock = ss.socket('push')
+var axon = require('../..')
+  , sock = axon.socket('push')
   , fs = require('fs')
   , read = fs.readFileSync;
 
