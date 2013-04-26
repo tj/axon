@@ -1,6 +1,6 @@
 
-var ss = require('../..')
-  , sock = ss.socket('pub');
+var axon = require('../..')
+  , sock = axon.socket('pub');
 
 sock.bind(3000);
 console.log('pub server started');
