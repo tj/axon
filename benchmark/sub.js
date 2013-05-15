@@ -64,4 +64,4 @@ function done(){
 }
 
 process.on('SIGINT', done);
-setTimeout(done, program.duration);
+setTimeout(done, program.duration || 5000);
