@@ -1,6 +1,6 @@
 
-var ss = require('../..')
-  , sock = ss.socket('push');
+var axon = require('../..')
+  , sock = axon.socket('push');
 
 sock.bind(3000);
 console.log('push server started');
