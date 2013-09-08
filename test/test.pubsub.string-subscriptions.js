@@ -9,7 +9,7 @@ pub.bind(4000);
 sub.subscribe('user:*');
 sub.subscribe('page:view');
 
-sub.connect(4000, function(){
+pub.on('connect', function() {
   pub.send('user:login', 'tobi');
   pub.send('user:login', 'loki');
   pub.send('user:logout', 'jane');
@@ -17,6 +17,8 @@ sub.connect(4000, function(){
   pub.send('other', 'message');
   pub.send('page:view', '/home');
 });
+
+sub.connect(4000);
 
 var msgs = [];
 sub.on('message', function(type, name){
