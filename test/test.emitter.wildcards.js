@@ -41,12 +41,14 @@ sub.on('foo.bar.baz', function(){
   --pending || done();
 });
 
-sub.connect(4000, function(){
+pub.sock.on('connect', function() {
   pub.emit('user:login', 'tobi');
   pub.emit('user:logout', 'tobi');
   pub.emit('weird[chars]{some stuff}', 'hello');
   pub.emit('foo.bar.baz');
 });
+
+sub.connect(4000);
 
 function done() {
   sub.close();
