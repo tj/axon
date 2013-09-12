@@ -2,7 +2,7 @@
 var axon = require('..')
   , should = require('should');
 
-var req = axon.socket('req')
+var req = axon.socket('req', { priority : true })
   , rep1 = axon.socket('rep')
   , rep2 = axon.socket('rep');
 
@@ -15,8 +15,6 @@ var seen = 0;
 req.bind(4000);
 rep1.connect(4000);
 rep2.connect(4000);
-
-req.usePriority(true);
 
 rep1.on('message', function(msg, reply){
   setTimeout(function () {
