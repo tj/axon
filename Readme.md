@@ -21,7 +21,7 @@
 ## Events
 
   - `close` when server or connection is closed
-  - `error` (err) when an-handled socket error occurs
+  - `error` (err) when an axon-handled socket error occurs
   - `ignored error` (err) when an axon-handled socket error occurs, but is ignored
   - `socket error` (err) emitted regardless of handling, for logging purposes
   - `reconnect attempt` when a reconnection attempt is made
