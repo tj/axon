@@ -16,6 +16,7 @@
   - light-weight wire protocol
   - supports arbitrary binary message (msgpack, json, BLOBS, etc)
   - supports JSON messages out of the box
+  - unix domain socket support
   - fast (~800 mb/s ~500,000 messages/s)
 
 ## Events
@@ -253,6 +254,13 @@ sock.bind('tcp://0.0.0.0:3000')
 sock.connect(3000)
 sock.connect(3000, '0.0.0.0')
 sock.connect('tcp://0.0.0.0:3000')
+```
+
+  You may also use unix domain sockets:
+
+```
+sock.bind('unix:///some/path')
+sock.connect('unix:///some/path')
 ```
 
 ## Protocol
