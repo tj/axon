@@ -5,7 +5,7 @@ var axon = require('..')
 var req = axon.socket('req')
   , rep = axon.socket('rep');
 
-var path = 'unix://' + process.cwd() + '/test.sock'
+var path = process.cwd() + '/test.sock'
 var bound = false;
 
 rep.connect(path);
