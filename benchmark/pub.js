@@ -21,7 +21,7 @@ console.log('sending %d byte messages', buf.length);
 
 function more() {
   for (var i = 0; i < perTick; ++i) sock.send(buf);
-  process.nextTick(more);
+  setImmediate(more);
 }
 
 more();
