@@ -11,7 +11,6 @@ var n = 0;
 
 push.bind(4000);
 
-push.format('json');
 push.send({ path: '/tmp/foo.png' });
 push.send({ path: '/tmp/bar.png' });
 push.send({ path: '/tmp/baz.png' });

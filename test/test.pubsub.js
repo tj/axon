@@ -1,6 +1,7 @@
 
 var ss = require('../')
-  , should = require('should');
+  , should = require('should')
+  , assert = require('assert');
 
 var pub = ss.socket('pub')
   , sub = ss.socket('sub');
@@ -13,7 +14,7 @@ var n = 0
 pub.bind(4000, function(){
   sub.connect(4000, function(){
     sub.on('message', function(msg){
-      msg.should.be.an.instanceof(Buffer);
+      assert('string' == typeof msg);
       msg.should.have.length(3);
       msg = msg.toString();
       switch (n++) {
@@ -41,5 +42,5 @@ pub.bind(4000, function(){
 });
 
 process.on('exit', function(){
-  should.equal(true, closed);
+  assert(closed);
 });

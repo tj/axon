@@ -37,7 +37,7 @@ pub.bind(4000, function(){
     setTimeout(function(){
       pub.emit('foo');
       pub.emit('bar', 1, 2, 3);
-      pub.emit([ 'hai', 4, 5, 6 ]);
+      pub.emit('hai', 4, 5, 6);
       pub.emit('baz', { name: 'tobi' });
     }, 20);
   });

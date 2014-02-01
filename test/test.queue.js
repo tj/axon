@@ -14,7 +14,7 @@ push.send('foo');
 push.send('bar');
 push.send('baz');
 
-push.queue.should.eql(['foo', 'bar', 'baz']);
+push.queue.should.eql([['foo'], ['bar'], ['baz']]);
 
 pull.connect(4000);
 pull.on('message', function(msg){
