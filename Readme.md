@@ -355,7 +355,6 @@ $ make test
 
   - [Screencast](https://vimeo.com/45818408)
   - [Axon RPC](https://github.com/visionmedia/axon-rpc)
-  - [msgpack codec](https://github.com/visionmedia/axon-msgpack)
 
 ## License
 
