@@ -21,6 +21,5 @@ sock.on('message', function(msg, reply){
   }
 });
 
-sock.format('json');
 sock.connect(4000);
 console.log('connected to 4000');

@@ -4,9 +4,6 @@ var axon = require('..')
   , req = axon.socket('req')
   , rep = axon.socket('rep');
 
-req.format('json');
-rep.format('json');
-
 req.bind(4000);
 rep.connect(4000);
 

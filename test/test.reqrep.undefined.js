@@ -5,9 +5,6 @@ var axon = require('..')
   , rep = axon.socket('rep')
   , assert = require('assert');
 
-req.format('json');
-rep.format('json');
-
 req.bind(4000);
 rep.connect(4000);
 

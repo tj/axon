@@ -37,7 +37,6 @@ var server = http.createServer(function(req, res){
 // socket
 
 var sock = axon.socket('req');
-sock.format('json');
 sock.bind(4000);
 
 console.log('listening on port 3000');

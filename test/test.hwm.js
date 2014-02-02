@@ -24,7 +24,7 @@ push.once('drop', function(msg){
 
     pull.bind(3333);
     push.once('flush', function(buf){
-      buf.should.eql(['1', '2', '3', '4', '5']);
+      buf.should.eql([['1'], ['2'], ['3'], ['4'], ['5']]);
       push.send('8');
 
       var vals = [];

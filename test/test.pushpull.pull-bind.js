@@ -16,7 +16,6 @@ push.send('foo');
 push.send('bar');
 
 pull.on('message', function(msg){
-  msg.should.be.an.instanceof(Buffer);
   msg.should.have.length(3);
   msg = msg.toString();
   switch (n++) {

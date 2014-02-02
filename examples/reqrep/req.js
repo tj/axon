@@ -2,7 +2,6 @@
 var axon = require('../..')
   , req = axon.socket('req');
 
-req.format('json');
 req.connect(3000);
 
 setInterval(function(){

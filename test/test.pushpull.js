@@ -1,6 +1,7 @@
 
 var ss = require('../')
-  , should = require('should');
+  , should = require('should')
+  , assert = require('assert');
 
 var push = ss.socket('push')
   , pull = ss.socket('pull');
@@ -16,7 +17,7 @@ push.send('bar');
 
 pull.connect(4000);
 pull.on('message', function(msg){
-  msg.should.be.an.instanceof(Buffer);
+  assert('string' == typeof msg);
   msg.should.have.length(3);
   msg = msg.toString();
   switch (n++) {

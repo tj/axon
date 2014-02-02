@@ -14,8 +14,7 @@
   - message oriented
   - automated reconnection
   - light-weight wire protocol
-  - supports arbitrary binary message (msgpack, json, BLOBS, etc)
-  - supports JSON messages out of the box
+  - mixed-type arguments (strings, objects, buffers, etc)
   - unix domain socket support
   - fast (~800 mb/s ~500,000 messages/s)
 
@@ -39,13 +38,23 @@
   - req / rep
   - pub-emitter / sub-emitter
 
+## Mixed argument types
+
+  Backed by [node-amp-message](https://github.com/visionmedia/node-amp-message)
+  you may pass strings, objects, and buffers as arguments.
+
+```js
+push.send('image', { w: 100, h: 200 }, imageBuffer);
+pull.on('message', function(type, size, img){});
+```
+
 ## Push / Pull
 
 `PushSocket`s distribute messages round-robin:
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('push');
+var axon = require('axon');
+var sock = axon.socket('push');
 
 sock.bind(3000);
 console.log('push server started');
@@ -58,8 +67,8 @@ setInterval(function(){
 Receiver of `PushSocket` messages:
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('pull');
+var axon = require('axon');
+var sock = axon.socket('pull');
 
 sock.connect(3000);
 
@@ -67,6 +76,7 @@ sock.on('message', function(msg){
   console.log(msg.toString());
 });
 ```
+
 
 Both `PushSocket`s and `PullSocket`s may `.bind()` or `.connect()`. In the
 following configuration the push socket is bound and pull "workers" connect
@@ -86,8 +96,8 @@ important difference when compared to a `PushSocket`, where the delivery of
 messages will be queued during disconnects and sent again upon the next connection.
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('pub');
+var axon = require('axon');
+var sock = axon.socket('pub');
 
 sock.bind(3000);
 console.log('pub server started');
@@ -100,8 +110,8 @@ setInterval(function(){
 `SubSocket` simply receives any messages from a `PubSocket`:
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('sub');
+var axon = require('axon');
+var sock = axon.socket('sub');
 
 sock.connect(3000);
 
@@ -114,8 +124,8 @@ sock.on('message', function(msg){
  using string patterns or regular expressions:
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('sub');
+var axon = require('axon');
+var sock = axon.socket('sub');
 
 sock.connect(3000);
 sock.subscribe('user:login');
@@ -134,8 +144,8 @@ bi-directional, every `req.send()` _must_ provide a callback which is invoked
 when the `RepSocket` replies.
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('req');
+var axon = require('axon');
+var sock = axon.socket('req');
 
 sock.bind(3000);
 
@@ -148,8 +158,8 @@ sock.send(img, function(res){
 you may have several of these nodes.
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('rep');
+var axon = require('axon');
+var sock = axon.socket('rep');
 
 sock.connect(3000);
 
@@ -164,8 +174,8 @@ sock.on('message', function(img, reply){
  to facilitate multiple tasks over a single socket:
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('req');
+var axon = require('axon');
+var sock = axon.socket('req');
 
 sock.bind(3000);
 
@@ -177,13 +187,13 @@ sock.send('resize', img, function(res){
  Respond to the "resize" task:
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('rep');
+var axon = require('axon');
+var sock = axon.socket('rep');
 
 sock.connect(3000);
 
 sock.on('message', function(task, img, reply){
-  switch (task.toString()) {
+  switch (task) {
     case 'resize':
       // resize the image
       reply(img);
@@ -199,8 +209,8 @@ sock.on('message', function(task, img, reply){
 app.js:
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('pub-emitter');
+var axon = require('axon');
+var sock = axon.socket('pub-emitter');
 
 sock.connect(3000);
 
@@ -212,8 +222,8 @@ setInterval(function(){
 logger.js:
 
 ```js
-var axon = require('axon')
-  , sock = axon.socket('sub-emitter');
+var axon = require('axon');
+var sock = axon.socket('sub-emitter');
 
 sock.bind(3000);
 
@@ -265,62 +275,7 @@ sock.connect('unix:///some/path')
 
 ## Protocol
 
-The wire protocol is simple and very much zeromq-like, where `<length>` is
-a BE 24 bit unsigned integer representing a maximum length of roughly ~16mb. The `<meta>`
-data byte is currently only used to store the codec, for example "json" is simply `1`,
-in turn JSON messages received on the client end will then be automatically decoded for
-you by selecting this same codec.
-
-```
- octet:     0      1      2      3      <length>
-        +------+------+------+------+------------------...
-        | meta | <length>           | data ...
-        +------+------+------+------+------------------...
-```
-
-Thus 5 bytes is the smallest message axon supports at the moment. Later if
-necessary we can use the meta to indicate a small message and ditch octet 2 and 3
-allowing for 3 byte messages.
-
-## Codecs
-
-To define a codec simply invoke the `axon.codec.define()` method, for example
-here is the JSON codec:
-
-```js
-var axon = require('axon');
-
-axon.codec.define('json', {
-  encode: JSON.stringify,
-  decode: JSON.parse
-});
-```
-
-__Note:__ codecs must be defined on both the sending and receiving ends, otherwise
-axon cannot properly decode the messages. You may of course ignore this
-feature all together and simply pass encoded data to `.send()`.
-
-To use a codec in a socket pair, use the `format(<codec name>)` command. For example, to send json over a req/rep socket pair:
-
-```
-var axon = require('axon')
-  , req = axon.socket('req')
-  , rep = axon.socket('rep')
-
-req.format('json');
-req.bind(3000);
-
-rep.format('json');
-rep.connect(3000);
-
-rep.on('message', function(obj, reply){
-  reply(obj);
-});
-
-req.send({ hello: 'World' }, function(res){
-  console.log(res);
-});
-```
+  Axon 2.x uses the extremely simple [AMP](https://github.com/visionmedia/node-amp) protocol to send messages on the wire. Codecs are no longer required as they were in Axon 1.x.
 
 ## Performance
 
