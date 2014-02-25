@@ -1,22 +1,28 @@
 
-1.0.0 / 2013-08-30 
+2.0.0 / 2014-02-25
 ==================
- 
+
+ * refactor to use the AMP protocol. Closes #577
+ * remove old codec support
+
+1.0.0 / 2013-08-30
+==================
+
 * change Socket#connect() to use inaddr_any as well
 
-0.6.1 / 2013-04-13 
+0.6.1 / 2013-04-13
 ==================
 
   * fix Socket#close() callback support
   * add callback to reply() when peer is gone
 
-0.6.0 / 2013-04-13 
+0.6.0 / 2013-04-13
 ==================
 
   * add optional reply() callback. Closes #95
   * add support for optional req.send() callback. Closes #89
 
-0.5.2 / 2013-04-09 
+0.5.2 / 2013-04-09
 ==================
 
   * add `sock.queue` array for logging / debugging etc
