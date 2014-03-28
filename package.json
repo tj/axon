@@ -30,5 +30,8 @@
     "type": "git",
     "url": "https://github.com/visionmedia/axon.git"
   },
+  "scripts": {
+    "test": "make test"
+  },
   "license": "MIT"
 }
