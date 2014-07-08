@@ -56,9 +56,9 @@ function test() {
 }
 
 function done() {
-  vals.should.include('a');
-  vals.should.include('b');
-  vals.should.include('c');
+  vals.should.containEql('a');
+  vals.should.containEql('b');
+  vals.should.containEql('c');
   vals.should.have.length(3);
   worker.close();
   a.close();
