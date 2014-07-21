@@ -11,10 +11,10 @@
     "amp": "~0.3.1"
   },
   "devDependencies": {
-    "better-assert": "*",
+    "better-assert": "~1.0.0",
     "should": "~3.0.1",
-    "mocha": "*",
-    "commander": "*",
+    "mocha": "~1.20.1",
+    "commander": "~2.3.0",
     "humanize-number": "0.0.1"
   },
   "keywords": [
@@ -35,6 +35,6 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=0.9"
+    "node": "=0.10"
   }
 }
