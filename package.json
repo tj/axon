@@ -33,5 +33,8 @@
   "scripts": {
     "test": "make test"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.9"
+  }
 }
