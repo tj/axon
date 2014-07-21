@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "better-assert": "*",
-    "should": "*",
+    "should": "~3.0.1",
     "mocha": "*",
     "commander": "*",
     "humanize-number": "0.0.1"
