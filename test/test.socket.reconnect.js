@@ -16,7 +16,7 @@ pull.connect(4000);
 
 var id = setInterval(function(){
   push.send(String(n++));
-}, 2);
+}, 5);
 
 pull.on('message', function(msg){
   msgs.push(msg.toString());
