@@ -1,4 +1,9 @@
 
+2.0.1 / 2014-09-09
+==================
+
+ * fix Floating-point durations to setTimeout may cause infinite loop
+
 2.0.0 / 2014-02-25
 ==================
 
