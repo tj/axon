@@ -31,7 +31,7 @@ while (n--) {
 function done() {
   msgs.should.have.length(10);
   for (var i = 0; i < 10; ++i) {
-    msgs.should.include('got "' + i + '"');
+    msgs.should.containEql('got "' + i + '"');
   }
   req.close();
   rep.close();
