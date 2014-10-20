@@ -11,11 +11,11 @@
     "amp": "~0.3.1"
   },
   "devDependencies": {
-    "better-assert": "*",
-    "should": "*",
-    "mocha": "*",
-    "commander": "*",
-    "humanize-number": "0.0.1"
+    "better-assert": "~1.0.1",
+    "commander": "~2.4.0",
+    "humanize-number": "0.0.1",
+    "mocha": "~1.21.5",
+    "should": "~4.1.0"
   },
   "keywords": [
     "zmq",
