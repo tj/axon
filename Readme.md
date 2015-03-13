@@ -1,9 +1,9 @@
 # Axon
 
   Axon is a message-oriented socket library for node.js heavily inspired by zeromq. For a light-weight
-  UDP alternative you may be interested in [punt](https://github.com/visionmedia/punt).
+  UDP alternative you may be interested in [punt](https://github.com/tj/punt).
 
-[![Build Status](https://travis-ci.org/visionmedia/axon.png)](https://travis-ci.org/visionmedia/axon)
+[![Build Status](https://travis-ci.org/tj/axon.png)](https://travis-ci.org/tj/axon)
 
 ## Installation
 
@@ -40,7 +40,7 @@
 
 ## Mixed argument types
 
-  Backed by [node-amp-message](https://github.com/visionmedia/node-amp-message)
+  Backed by [node-amp-message](https://github.com/tj/node-amp-message)
   you may pass strings, objects, and buffers as arguments.
 
 ```js
@@ -275,7 +275,7 @@ sock.connect('unix:///some/path')
 
 ## Protocol
 
-  Axon 2.x uses the extremely simple [AMP](https://github.com/visionmedia/node-amp) protocol to send messages on the wire. Codecs are no longer required as they were in Axon 1.x.
+  Axon 2.x uses the extremely simple [AMP](https://github.com/tj/node-amp) protocol to send messages on the wire. Codecs are no longer required as they were in Axon 1.x.
 
 ## Performance
 
@@ -348,13 +348,13 @@ $ make test
 
 ## Authors
 
-  - [visionmedia](http://github.com/visionmedia)
+  - [tj](http://github.com/tj)
   - [gjohnson](https://github.com/gjohnson)
 
 ## Links
 
   - [Screencast](https://vimeo.com/45818408)
-  - [Axon RPC](https://github.com/visionmedia/axon-rpc)
+  - [Axon RPC](https://github.com/tj/axon-rpc)
 
 ## License
 
