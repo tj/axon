@@ -27,7 +27,7 @@
     "rpc"
   ],
   "engines": {
-    "node": "0.10.x || 0.11.x"
+    "node": "0.10.x || 0.11.x || 0.12.x || 4.x.x"
   },
   "repository": {
     "type": "git",
