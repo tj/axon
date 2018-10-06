@@ -281,7 +281,7 @@ sock.connect('unix:///some/path')
 
 Preliminary benchmarks on my Macbook Pro based on 10 messages
 per tick as a realistic production application would likely have
-even less than this. "better" numbers may be acheived with batching
+even less than this. "better" numbers may be achieved with batching
 and a larger messages/tick count however this is not realistic.
 
   64 byte messages:
