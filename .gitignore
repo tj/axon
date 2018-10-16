@@ -1,3 +1,4 @@
 node_modules
 testing
 .DS_Store
+.idea
